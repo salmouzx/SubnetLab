@@ -29,7 +29,7 @@ export default function RootLayout({
       lang="id"
       className={`${inter.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col font-sans bg-background text-foreground">
+      <body className="min-h-full flex flex-col font-sans bg-background text-foreground overflow-x-clip">
         <TooltipProvider>{children}</TooltipProvider>
       </body>
     </html>

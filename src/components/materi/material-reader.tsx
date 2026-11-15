@@ -156,36 +156,36 @@ export function MaterialReader({ topic }: MaterialReaderProps) {
       <div className="flex flex-col gap-6 max-w-3xl mx-auto py-10">
         <Link
           href="/materi"
-          className="hover:text-emerald-600 font-medium text-xs inline-flex items-center gap-1.5 transition-colors text-muted-foreground w-fit"
+          className="hover:text-[#113057] font-medium text-xs inline-flex items-center gap-1.5 transition-colors text-muted-foreground w-fit"
         >
           <ArrowLeft className="h-3.5 w-3.5" />
           Kembali ke Indeks Materi
         </Link>
 
-        <Card className="border-amber-500/40 bg-card shadow-sm p-6 sm:p-8 text-center flex flex-col items-center gap-4">
-          <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20">
+        <Card className="border-[#FFB61E]/50 bg-card shadow-sm p-6 sm:p-8 text-center flex flex-col items-center gap-4">
+          <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#FFB61E]/15 text-[#D97706] dark:text-amber-400 border border-[#FFB61E]/30">
             <Lock className="h-7 w-7" />
           </div>
 
           <div className="flex flex-col gap-1.5 max-w-lg">
-            <Badge variant="outline" className="w-fit mx-auto border-amber-300 text-amber-800 bg-amber-50 dark:bg-amber-950/40 dark:text-amber-300 font-mono text-xs">
+            <Badge variant="outline" className="w-fit mx-auto border-[#FFB61E] text-[#92400E] bg-amber-50 dark:bg-amber-950/40 dark:text-amber-300 font-mono text-xs">
               Topik {topic.order} Masih Terkunci
             </Badge>
             <h1 className="text-xl sm:text-2xl font-extrabold text-foreground">
               {topic.title}
             </h1>
             <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-              Topik ini terkunci. Anda harus mempelajari materi dan mengirim jawaban soal pada topik sebelumnya terlebih dahulu untuk membuka materi ini.
+              Topik ini belum terbuka. Baca dulu materi sebelumnya dan kirim jawabannya buat lanjut ke sini.
             </p>
           </div>
 
           <div className="w-full max-w-md rounded-xl border bg-muted/40 p-4 text-left flex items-start gap-3 mt-1">
-            <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-emerald-600 text-white text-xs font-mono font-bold mt-0.5">
+            <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-[#113057] text-white text-xs font-mono font-bold mt-0.5">
               {prerequisite.order}
             </span>
             <div className="flex flex-col gap-0.5 min-w-0">
               <span className="text-[11px] font-semibold text-muted-foreground uppercase tracking-wider">
-                Topik Prasyarat yang Wajib Diselesaikan:
+                Topik Prasyarat yang Wajib Kamu Selesaikan:
               </span>
               <span className="text-xs sm:text-sm font-bold text-foreground truncate">
                 {prerequisite.title}
@@ -198,7 +198,7 @@ export function MaterialReader({ topic }: MaterialReaderProps) {
               href={`/materi/${prerequisite.slug}`}
               className={cn(
                 buttonVariants({ size: "default" }),
-                "gap-2 bg-emerald-600 text-white hover:bg-emerald-700 shadow-sm"
+                "gap-2 bg-[#113057] text-white hover:bg-[#0A2342] shadow-sm"
               )}
             >
               <BookOpen className="h-4 w-4" />
@@ -227,7 +227,7 @@ export function MaterialReader({ topic }: MaterialReaderProps) {
         <div className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
           <Link
             href="/materi"
-            className="hover:text-emerald-600 font-medium inline-flex items-center gap-1 transition-colors"
+            className="hover:text-[#113057] font-medium inline-flex items-center gap-1 transition-colors"
           >
             <ArrowLeft className="h-3.5 w-3.5" />
             Daftar Materi Kelas C
@@ -246,7 +246,7 @@ export function MaterialReader({ topic }: MaterialReaderProps) {
             className="w-full sm:w-auto rounded-lg border bg-card px-3 py-2 text-xs font-semibold text-foreground flex items-center justify-between gap-2 shadow-xs"
           >
             <span className="flex items-center gap-1.5">
-              <BookOpen className="h-3.5 w-3.5 text-emerald-600" />
+              <BookOpen className="h-3.5 w-3.5 text-[#113057]" />
               Pilih Topik ({completedCount}/{totalCount} Selesai)
             </span>
             <ChevronDown
@@ -276,7 +276,7 @@ export function MaterialReader({ topic }: MaterialReaderProps) {
                       <span className="truncate">
                         {String(item.order).padStart(2, "0")}. {item.title}
                       </span>
-                      <Lock className="h-3 w-3 shrink-0 text-amber-600 dark:text-amber-400" />
+                      <Lock className="h-3 w-3 shrink-0 text-[#D97706] dark:text-amber-400" />
                     </Link>
                   )
                 }
@@ -289,7 +289,7 @@ export function MaterialReader({ topic }: MaterialReaderProps) {
                     className={cn(
                       "flex items-center justify-between gap-2 rounded-lg px-2.5 py-2 text-xs transition-colors",
                       active
-                        ? "bg-emerald-600 text-white font-semibold"
+                        ? "bg-[#113057] text-white font-semibold"
                         : "hover:bg-muted text-foreground"
                     )}
                   >
@@ -300,7 +300,7 @@ export function MaterialReader({ topic }: MaterialReaderProps) {
                       <CheckCircle2
                         className={cn(
                           "h-3.5 w-3.5 shrink-0",
-                          active ? "text-white" : "text-emerald-600"
+                          active ? "text-[#FFB61E]" : "text-[#113057]"
                         )}
                       />
                     )}
@@ -316,19 +316,19 @@ export function MaterialReader({ topic }: MaterialReaderProps) {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
         {/* SIDEBAR DAFTAR 12 MATERI (Desktop) */}
         <aside className="hidden lg:flex lg:col-span-4 xl:col-span-3 flex-col gap-3 sticky top-20">
-          <Card className="shadow-xs">
+          <Card className="shadow-[0_2px_10px_rgba(10,35,66,0.05)] border-[#E0E0E0] dark:border-border">
             <CardHeader className="pb-3 border-b">
               <div className="flex items-center justify-between">
                 <CardTitle className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
-                  Alur Berurutan Kelas C
+                  Alur Belajar Kelas C
                 </CardTitle>
-                <span className="text-xs font-mono font-bold text-emerald-700 dark:text-emerald-400">
+                <span className="text-xs font-mono font-bold text-[#113057] dark:text-blue-400">
                   {completedCount}/{totalCount} ({progressPercent}%)
                 </span>
               </div>
-              <div className="h-1.5 w-full rounded-full bg-muted overflow-hidden mt-1.5">
+              <div className="h-2 w-full rounded-full bg-muted overflow-hidden mt-1.5">
                 <div
-                  className="h-full bg-emerald-600 transition-all duration-300 rounded-full"
+                  className="h-full bg-[linear-gradient(90deg,#113057_0%,#FFB61E_100%)] transition-all duration-300 rounded-full"
                   style={{ width: `${progressPercent}%` }}
                 />
               </div>
@@ -354,7 +354,7 @@ export function MaterialReader({ topic }: MaterialReaderProps) {
                         </span>
                         <span className="truncate">{item.title}</span>
                       </div>
-                      <Lock className="h-3 w-3 shrink-0 text-amber-600 dark:text-amber-400" />
+                      <Lock className="h-3 w-3 shrink-0 text-[#D97706] dark:text-amber-400" />
                     </Link>
                   )
                 }
@@ -366,7 +366,7 @@ export function MaterialReader({ topic }: MaterialReaderProps) {
                     className={cn(
                       "flex items-center justify-between gap-2 rounded-lg px-2.5 py-2 text-xs transition-all",
                       isActive
-                        ? "bg-emerald-600 text-white font-semibold shadow-xs"
+                        ? "bg-[#113057] text-white font-semibold shadow-xs"
                         : "text-foreground/85 hover:bg-muted hover:text-foreground"
                     )}
                   >
@@ -375,9 +375,9 @@ export function MaterialReader({ topic }: MaterialReaderProps) {
                         className={cn(
                           "font-mono text-[11px] px-1.5 py-0.5 rounded shrink-0",
                           isActive
-                            ? "bg-emerald-700 text-white"
+                            ? "bg-[#0A2342]/40 text-white"
                             : isDone
-                              ? "bg-emerald-100 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300"
+                              ? "bg-[#113057]/15 text-[#113057] dark:bg-blue-950/60 dark:text-blue-300"
                               : "bg-muted text-muted-foreground"
                         )}
                       >
@@ -390,7 +390,7 @@ export function MaterialReader({ topic }: MaterialReaderProps) {
                       <CheckCircle2
                         className={cn(
                           "h-3.5 w-3.5 shrink-0",
-                          isActive ? "text-white" : "text-emerald-600"
+                          isActive ? "text-[#FFB61E]" : "text-[#113057]"
                         )}
                       />
                     )}
@@ -402,15 +402,15 @@ export function MaterialReader({ topic }: MaterialReaderProps) {
         </aside>
 
         {/* KONTEN UTAMA MATERI */}
-        <div className="lg:col-span-8 xl:col-span-9 flex flex-col gap-5">
+        <div className="lg:col-span-8 xl:col-span-9 min-w-0 flex flex-col gap-5">
           {/* 1. Header Topik Materi */}
-          <div className="rounded-2xl border bg-card p-5 sm:p-6 shadow-xs flex flex-col gap-4">
+          <div className="rounded-2xl border border-[#E0E0E0] border-t-4 border-t-[#113057] bg-card p-5 sm:p-6 shadow-[0_2px_10px_rgba(10,35,66,0.05)] flex flex-col gap-4 dark:border-border">
             <div className="flex flex-wrap items-center justify-between gap-2">
               <div className="flex flex-wrap items-center gap-2">
-                <Badge className="bg-emerald-600 text-white hover:bg-emerald-700 font-mono">
+                <Badge className="bg-[#113057] text-white hover:bg-[#0A2342] font-mono">
                   Topik {String(topic.order).padStart(2, "0")} / 12
                 </Badge>
-                <Badge variant="outline" className="text-xs">
+                <Badge variant="outline" className="text-xs border-[#113057]/25 text-[#113057] bg-[#113057]/5">
                   {topic.category}
                 </Badge>
                 <span className="text-xs text-muted-foreground inline-flex items-center gap-1">
@@ -421,20 +421,20 @@ export function MaterialReader({ topic }: MaterialReaderProps) {
 
               {/* Status Kelulusan Materi Berbasis Kuis */}
               {isCompleted ? (
-                <div className="inline-flex items-center gap-2 rounded-md border border-[#86EFAC] bg-[#DCFCE7] px-3 py-1 text-xs font-mono font-bold text-[#166534]">
-                  <CheckCircle2 className="h-3.5 w-3.5 shrink-0" />
+                <div className="inline-flex items-center gap-2 rounded-md border border-[#FFB61E] bg-[#FFB61E]/15 px-3 py-1 text-xs font-mono font-bold text-[#92400E] dark:text-amber-300">
+                  <CheckCircle2 className="h-3.5 w-3.5 shrink-0 text-[#D97706]" />
                   <span>SELESAI</span>
                   <span className="opacity-40">|</span>
-                  <span className="font-extrabold">SKOR KUIS: {correctCount}/2</span>
+                  <span className="font-extrabold">SKOR: {correctCount}/2</span>
                 </div>
               ) : (
                 <button
                   type="button"
                   onClick={scrollToQuiz}
-                  className="inline-flex items-center gap-1.5 text-xs text-amber-700 dark:text-amber-300 bg-amber-50 dark:bg-amber-950/40 border border-amber-300 dark:border-amber-800 rounded-lg px-2.5 py-1 font-medium hover:bg-amber-100 transition-colors"
+                  className="inline-flex items-center gap-1.5 text-xs text-[#92400E] dark:text-amber-300 bg-[#FFB61E]/15 dark:bg-amber-950/40 border border-[#FFB61E]/60 dark:border-amber-800 rounded-lg px-2.5 py-1 font-semibold hover:bg-[#FFB61E]/25 transition-colors cursor-pointer"
                 >
-                  <ClipboardCheck className="h-3.5 w-3.5 text-amber-600" />
-                  Kirim Jawaban Kuis di Bawah untuk Menyelesaikan
+                  <ClipboardCheck className="h-3.5 w-3.5 text-[#D97706]" />
+                  Jawab Kuis di Bawah untuk Lanjut
                 </button>
               )}
             </div>
@@ -448,16 +448,16 @@ export function MaterialReader({ topic }: MaterialReaderProps) {
               </p>
             </div>
 
-            {/* Tujuan Pembelajaran (Learning Objectives) */}
-            <div className="rounded-xl border bg-emerald-50/40 dark:bg-emerald-950/20 p-4 flex flex-col gap-2">
-              <h2 className="text-xs font-bold uppercase tracking-wider text-emerald-800 dark:text-emerald-300 flex items-center gap-1.5">
-                <ListChecks className="h-4 w-4 text-emerald-600" />
-                Tujuan Pembelajaran (Learning Objectives)
+            {/* Tujuan Pembelajaran (Biru + Kuning Halus) */}
+            <div className="rounded-xl border border-[#113057]/20 bg-[#113057]/[0.04] dark:bg-blue-950/20 p-4 flex flex-col gap-2">
+              <h2 className="text-xs font-bold uppercase tracking-wider text-[#113057] dark:text-blue-300 flex items-center gap-1.5">
+                <ListChecks className="h-4 w-4 text-[#113057]" />
+                Yang Akan Kamu Kuasai di Topik Ini
               </h2>
               <ul className="grid grid-cols-1 gap-1.5 text-xs text-foreground/90">
                 {topic.objectives.map((obj, idx) => (
                   <li key={idx} className="flex items-start gap-2">
-                    <CheckCircle2 className="h-3.5 w-3.5 text-emerald-600 shrink-0 mt-0.5" />
+                    <CheckCircle2 className="h-3.5 w-3.5 text-[#D97706] dark:text-[#FFB61E] shrink-0 mt-0.5" />
                     <span>{obj}</span>
                   </li>
                 ))}
@@ -470,7 +470,7 @@ export function MaterialReader({ topic }: MaterialReaderProps) {
             <Card key={idx} className="shadow-xs">
               <CardHeader className="pb-3 border-b">
                 <CardTitle className="text-base font-bold text-foreground flex items-center gap-2">
-                  <span className="flex h-6 w-6 items-center justify-center rounded-md bg-emerald-600/10 text-emerald-700 dark:text-emerald-300 text-xs font-mono font-bold">
+                  <span className="flex h-6 w-6 items-center justify-center rounded-md bg-[#113057]/10 text-[#113057] dark:text-blue-300 text-xs font-mono font-bold">
                     {idx + 1}
                   </span>
                   {sec.heading}
@@ -488,8 +488,8 @@ export function MaterialReader({ topic }: MaterialReaderProps) {
                 ))}
 
                 {sec.formulaCallout && (
-                  <div className="rounded-xl border border-l-4 border-l-emerald-600 bg-muted/30 p-4 flex flex-col gap-1">
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-400">
+                  <div className="rounded-xl border border-l-4 border-l-[#FFB61E] bg-amber-50/40 dark:bg-amber-950/15 p-4 flex flex-col gap-1">
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-[#B45309] dark:text-amber-400">
                       {sec.formulaCallout.label}
                     </span>
                     <p className="text-sm sm:text-base font-bold font-mono text-foreground">
@@ -545,12 +545,12 @@ export function MaterialReader({ topic }: MaterialReaderProps) {
           ))}
 
           {/* 3. Diagram & Visualisasi Biner 32-Bit Terintegrasi Simulator */}
-          <Card className="shadow-xs border-emerald-500/30">
-            <CardHeader className="pb-3 border-b flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 bg-emerald-50/30 dark:bg-emerald-950/15">
+          <Card className="shadow-[0_2px_10px_rgba(10,35,66,0.05)] border-[#113057]/25">
+            <CardHeader className="pb-3 border-b flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 bg-[#113057]/[0.04] dark:bg-blue-950/20">
               <div>
                 <CardTitle className="text-sm font-bold flex items-center gap-2">
-                  <Binary className="h-4 w-4 text-emerald-600" />
-                  Ilustrasi Biner 32-Bit & Identitas Subnet ({simPreview.ipAddress}/{simPreview.prefix})
+                  <Binary className="h-4 w-4 text-[#113057]" />
+                  Visualisasi Biner 32-Bit ({simPreview.ipAddress}/{simPreview.prefix})
                 </CardTitle>
                 <p className="text-xs text-muted-foreground mt-0.5">
                   {topic.simulatorPreset.caption}
@@ -561,11 +561,11 @@ export function MaterialReader({ topic }: MaterialReaderProps) {
                 href={`/simulator?ip=${encodeURIComponent(topic.simulatorPreset.ip)}&prefix=${topic.simulatorPreset.prefix}`}
                 className={cn(
                   buttonVariants({ size: "sm" }),
-                  "gap-1.5 bg-emerald-600 text-white hover:bg-emerald-700 text-xs shrink-0 self-start sm:self-auto"
+                  "gap-1.5 bg-[#113057] text-white hover:bg-[#0A2342] text-xs shrink-0 self-start sm:self-auto"
                 )}
               >
                 <Calculator className="h-3.5 w-3.5" />
-                Coba Kasus Ini di Simulator
+                Buka Kasus Ini di Simulator
               </Link>
             </CardHeader>
 
@@ -593,27 +593,38 @@ export function MaterialReader({ topic }: MaterialReaderProps) {
 
               {/* Bar 32-Bit Linear */}
               <div className="overflow-x-auto pb-1">
-                <div className="flex items-center gap-1 min-w-[660px] justify-between">
+                <div className="flex items-center gap-1 min-w-[700px] justify-between">
                   {simPreview.linearBits.map((bit) => {
+                    const isOctetBoundary =
+                      bit.bitNumber % 8 === 0 && bit.bitNumber < 32
                     let cls =
-                      "border-emerald-700 bg-emerald-600 text-white font-bold"
+                      "border-[#D97706] bg-[#FFB61E] text-[#113057] font-bold"
                     if (bit.role === "network") {
                       cls =
                         "border-slate-300 bg-slate-100 text-slate-800 dark:bg-slate-800 dark:border-slate-700 dark:text-slate-200"
                     } else if (bit.role === "subnet") {
-                      cls = "border-blue-700 bg-blue-600 text-white font-bold"
+                      cls = "border-[#15803D] bg-[#16A34A] text-white font-bold"
                     }
                     return (
-                      <div
-                        key={bit.bitNumber}
-                        className={cn(
-                          "flex-1 aspect-square max-w-[24px] flex items-center justify-center rounded border text-[11px] font-mono",
-                          cls
+                      <React.Fragment key={bit.bitNumber}>
+                        <div
+                          className={cn(
+                            "flex-1 aspect-square max-w-[24px] flex items-center justify-center rounded border text-[11px] font-mono",
+                            cls
+                          )}
+                          title={`Bit ke-${bit.bitNumber}: ${bit.role}`}
+                        >
+                          {bit.value}
+                        </div>
+                        {isOctetBoundary && (
+                          <span
+                            aria-hidden="true"
+                            className="px-0.5 text-muted-foreground font-mono font-bold select-none"
+                          >
+                            .
+                          </span>
                         )}
-                        title={`Bit ke-${bit.bitNumber}: ${bit.role}`}
-                      >
-                        {bit.value}
-                      </div>
+                      </React.Fragment>
                     )
                   })}
                 </div>
@@ -621,24 +632,24 @@ export function MaterialReader({ topic }: MaterialReaderProps) {
 
               {/* 3 Kartu Hasil Identitas */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                <div className="rounded-lg border border-l-4 border-l-blue-600 bg-blue-50/30 dark:bg-blue-950/20 p-3">
-                  <span className="text-[10px] font-bold text-blue-600 dark:text-blue-400 uppercase">
+                <div className="rounded-lg border border-l-4 border-l-[#113057] bg-[#113057]/[0.04] dark:bg-blue-950/20 p-3">
+                  <span className="text-[10px] font-bold text-[#113057] dark:text-blue-400 uppercase">
                     NETWORK ID
                   </span>
                   <p className="text-base font-bold font-mono text-foreground mt-0.5">
                     {simPreview.networkAddress}
                   </p>
                 </div>
-                <div className="rounded-lg border border-l-4 border-l-emerald-600 bg-emerald-50/30 dark:bg-emerald-950/20 p-3">
-                  <span className="text-[10px] font-bold text-emerald-600 dark:text-emerald-400 uppercase">
-                    RENTANG HOST VALID ({simPreview.usableHosts} HOST)
+                <div className="rounded-lg border border-l-4 border-l-[#16A34A] bg-green-50/40 dark:bg-green-950/20 p-3">
+                  <span className="text-[10px] font-bold text-[#15803D] dark:text-green-400 uppercase">
+                    HOST VALID ({simPreview.usableHosts} HOST)
                   </span>
                   <p className="text-sm font-bold font-mono text-foreground mt-0.5">
                     {simPreview.usableHostRangeLabel}
                   </p>
                 </div>
-                <div className="rounded-lg border border-l-4 border-l-amber-600 bg-amber-50/30 dark:bg-amber-950/20 p-3">
-                  <span className="text-[10px] font-bold text-amber-600 dark:text-amber-400 uppercase">
+                <div className="rounded-lg border border-l-4 border-l-amber-600 bg-amber-50/40 dark:bg-amber-950/20 p-3">
+                  <span className="text-[10px] font-bold text-amber-700 dark:text-amber-400 uppercase">
                     BROADCAST ID
                   </span>
                   <p className="text-base font-bold font-mono text-foreground mt-0.5">
@@ -653,15 +664,15 @@ export function MaterialReader({ topic }: MaterialReaderProps) {
           <Card className="shadow-xs">
             <CardHeader className="pb-3 border-b">
               <CardTitle className="text-sm font-bold flex items-center gap-2">
-                <HelpCircle className="h-4 w-4 text-emerald-600" />
-                Contoh Kasus pada Materi & Langkah Penyelesaian
+                <HelpCircle className="h-4 w-4 text-[#113057]" />
+                Contoh Soal & Langkah Penyelesaiannya
               </CardTitle>
             </CardHeader>
 
             <CardContent className="pt-4 flex flex-col gap-4">
               <div className="rounded-xl border bg-muted/30 p-3.5">
                 <span className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground">
-                  Contoh Studi Kasus:
+                  Kasus Contoh:
                 </span>
                 <p className="text-sm font-semibold text-foreground mt-1 leading-relaxed">
                   {topic.workedExample.question}
@@ -674,7 +685,7 @@ export function MaterialReader({ topic }: MaterialReaderProps) {
                     key={sIdx}
                     className="rounded-xl border bg-card p-3.5 flex items-start gap-3"
                   >
-                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-emerald-600 text-white text-xs font-mono font-bold mt-0.5">
+                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-[#113057] text-white text-xs font-mono font-bold mt-0.5">
                       {sIdx + 1}
                     </span>
                     <div className="flex flex-col gap-0.5">
@@ -687,10 +698,10 @@ export function MaterialReader({ topic }: MaterialReaderProps) {
                 ))}
               </div>
 
-              <div className="rounded-xl border border-[#86EFAC] bg-[#DCFCE7] p-3.5 text-[#166534] flex items-start gap-2.5">
-                <CheckCircle2 className="h-4 w-4 shrink-0 mt-0.5" />
+              <div className="rounded-xl border border-[#113057]/25 bg-[#113057]/[0.06] p-3.5 text-[#0A2342] dark:text-blue-200 flex items-start gap-2.5">
+                <CheckCircle2 className="h-4 w-4 shrink-0 mt-0.5 text-[#113057]" />
                 <div className="text-xs">
-                  <span className="font-bold">Kesimpulan Contoh: </span>
+                  <span className="font-bold">Hasil Akhir: </span>
                   <span className="font-mono font-semibold">
                     {topic.workedExample.finalAnswer}
                   </span>
@@ -700,18 +711,18 @@ export function MaterialReader({ topic }: MaterialReaderProps) {
           </Card>
 
           {/* 5. Ringkasan Poin Kunci (Key Takeaways) */}
-          <Card className="shadow-xs">
+          <Card className="shadow-xs border-l-4 border-l-[#FFB61E]">
             <CardHeader className="pb-3 border-b">
               <CardTitle className="text-sm font-bold flex items-center gap-2">
-                <Lightbulb className="h-4 w-4 text-amber-500" />
-                Ringkasan Poin Kunci (Key Takeaways)
+                <Lightbulb className="h-4 w-4 text-[#FFB61E]" />
+                Poin Penting yang Wajib Kamu Ingat
               </CardTitle>
             </CardHeader>
             <CardContent className="pt-4">
               <ul className="flex flex-col gap-2 text-xs sm:text-sm text-foreground/90">
                 {topic.keyTakeaways.map((point, kIdx) => (
                   <li key={kIdx} className="flex items-start gap-2.5">
-                    <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded bg-emerald-100 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300 text-xs font-bold mt-0.5">
+                    <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded bg-[#FFB61E]/20 text-[#92400E] dark:bg-amber-950/60 dark:text-amber-300 text-xs font-bold mt-0.5">
                       <Check className="h-3 w-3" />
                     </span>
                     <span className="leading-relaxed">{point}</span>
@@ -722,15 +733,15 @@ export function MaterialReader({ topic }: MaterialReaderProps) {
           </Card>
 
           {/* 6. UJI PEMAHAMAN MATERI (2 SOAL PILIHAN GANDA - SYARAT KELULUSAN TOPIK) */}
-          <Card id="quiz-checkpoint" className="shadow-xs border-emerald-500/40 scroll-mt-20">
-            <CardHeader className="pb-3 border-b bg-emerald-50/40 dark:bg-emerald-950/20 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+          <Card id="quiz-checkpoint" className="shadow-[0_2px_12px_rgba(10,35,66,0.06)] border-[#113057]/30 scroll-mt-20">
+            <CardHeader className="pb-3 border-b bg-[#113057]/[0.04] dark:bg-blue-950/20 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
               <div>
                 <CardTitle className="text-base font-bold text-foreground flex items-center gap-2">
-                  <ClipboardCheck className="h-4 w-4 text-emerald-600" />
-                  Uji Pemahaman Materi: {topic.title} (Syarat Buka Materi Berikutnya)
+                  <ClipboardCheck className="h-4 w-4 text-[#113057]" />
+                  Cek Pemahaman: {topic.title}
                 </CardTitle>
                 <p className="text-xs text-muted-foreground mt-0.5">
-                  Pilih jawaban pada kedua soal di bawah ini lalu klik <strong>Kirim Jawaban</strong> untuk membuka topik berikutnya serta melihat pembahasan.
+                  Jawab 2 soal di bawah lalu klik <strong>Kirim Jawaban</strong> buat buka topik berikutnya.
                 </p>
               </div>
 
@@ -773,7 +784,7 @@ export function MaterialReader({ topic }: MaterialReaderProps) {
                     {/* Pertanyaan */}
                     <div className="flex items-start justify-between gap-3">
                       <div className="flex items-start gap-2.5">
-                        <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-emerald-600 text-white text-xs font-mono font-bold mt-0.5">
+                        <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-[#113057] text-white text-xs font-mono font-bold mt-0.5">
                           {qIdx + 1}
                         </span>
                         <p className="text-sm font-bold text-foreground leading-relaxed">
@@ -794,10 +805,9 @@ export function MaterialReader({ topic }: MaterialReaderProps) {
                         if (!isQuizSubmitted) {
                           if (isSelected) {
                             optionStyle =
-                              "border-emerald-600 bg-emerald-50/80 text-emerald-900 font-semibold ring-1 ring-emerald-600/30 dark:bg-emerald-950/50 dark:text-emerald-200"
+                              "border-[#113057] bg-[#113057]/10 text-[#0A2342] font-semibold ring-1 ring-[#113057]/30 dark:bg-blue-950/50 dark:text-blue-200"
                           }
                         } else {
-                          // Setelah klik Kirim Jawaban, tampilkan yang benar & salah
                           if (isOptionCorrect) {
                             optionStyle =
                               "border-[#86EFAC] bg-[#DCFCE7] text-[#166534] font-bold"
@@ -827,7 +837,7 @@ export function MaterialReader({ topic }: MaterialReaderProps) {
                                 className={cn(
                                   "flex h-6 w-6 shrink-0 items-center justify-center rounded font-mono text-xs font-bold border",
                                   !isQuizSubmitted && isSelected
-                                    ? "bg-emerald-600 text-white border-emerald-600"
+                                    ? "bg-[#113057] text-white border-[#113057]"
                                     : isQuizSubmitted && isOptionCorrect
                                       ? "bg-[#166534] text-white border-[#166534]"
                                       : isQuizSubmitted && isSelected && !isOptionCorrect
@@ -853,7 +863,7 @@ export function MaterialReader({ topic }: MaterialReaderProps) {
                       })}
                     </div>
 
-                    {/* Status Benar/Salah & Pembahasan (HANYA TAMPIL SETELAH KLIK KIRIM JAWABAN) */}
+                    {/* Status Benar/Salah & Pembahasan */}
                     {isQuizSubmitted && (
                       <div className="pl-0 sm:pl-8 pt-1 flex flex-col gap-2.5">
                         {isCorrect ? (
@@ -863,7 +873,7 @@ export function MaterialReader({ topic }: MaterialReaderProps) {
                           >
                             <CheckCircle2 className="h-4 w-4 shrink-0" />
                             <span>
-                              Jawaban Anda Benar! ({OPTION_LETTERS[q.correctIndex]}.{" "}
+                              Jawaban Kamu Benar! ({OPTION_LETTERS[q.correctIndex]}.{" "}
                               {q.options[q.correctIndex]})
                             </span>
                           </div>
@@ -874,7 +884,7 @@ export function MaterialReader({ topic }: MaterialReaderProps) {
                           >
                             <XCircle className="h-4 w-4 shrink-0" />
                             <span>
-                              Jawaban Anda Kurang Tepat. Jawaban yang benar adalah{" "}
+                              Jawaban belum pas. Jawaban yang benar:{" "}
                               <strong>
                                 {OPTION_LETTERS[q.correctIndex]}. {q.options[q.correctIndex]}
                               </strong>
@@ -885,7 +895,7 @@ export function MaterialReader({ topic }: MaterialReaderProps) {
 
                         {/* Kotak Pembahasan */}
                         <div className="rounded-xl border bg-background p-3.5 text-xs flex flex-col gap-2">
-                          <span className="font-bold text-emerald-700 dark:text-emerald-400 uppercase tracking-wider text-[11px]">
+                          <span className="font-bold text-[#113057] dark:text-blue-400 uppercase tracking-wider text-[11px]">
                             Pembahasan Soal {qIdx + 1}:
                           </span>
                           <p className="text-foreground/90 leading-relaxed">
@@ -895,7 +905,7 @@ export function MaterialReader({ topic }: MaterialReaderProps) {
                             {q.steps.map((st, stIdx) => (
                               <div
                                 key={stIdx}
-                                className="font-mono text-[11px] text-muted-foreground bg-muted/40 rounded px-2.5 py-1 border"
+                                className="font-mono text-[11px] text-muted-foreground bg-muted/40 rounded px-2.5 py-1 border break-words"
                               >
                                 • {st}
                               </div>
@@ -923,16 +933,16 @@ export function MaterialReader({ topic }: MaterialReaderProps) {
               <div className="flex flex-wrap items-center justify-between gap-3 pt-2 border-t">
                 <span className="text-xs text-muted-foreground">
                   {!isQuizSubmitted
-                    ? `Terjawab: ${Object.keys(selectedAnswers).length} dari 2 soal (Wajib dikirim untuk membuka topik berikutnya)`
-                    : "Topik ini telah selesai dipelajari dan materi berikutnya telah terbuka!"}
+                    ? `Terjawab: ${Object.keys(selectedAnswers).length} dari 2 soal (Kirim jawaban buat buka materi berikutnya)`
+                    : "Topik ini sudah beres. Materi berikutnya sudah terbuka!"}
                 </span>
 
-                <div className="flex items-center gap-2">
+                <div className="flex flex-wrap items-center gap-2">
                   {!isQuizSubmitted ? (
                     <Button
                       type="button"
                       onClick={handleSubmitCheckQuiz}
-                      className="gap-1.5 bg-emerald-600 text-white hover:bg-emerald-700"
+                      className="gap-1.5 bg-[#113057] text-white hover:bg-[#0A2342]"
                     >
                       <Send className="h-3.5 w-3.5" />
                       Kirim Jawaban & Buka Materi Berikutnya
@@ -945,7 +955,7 @@ export function MaterialReader({ topic }: MaterialReaderProps) {
                       className="gap-1.5"
                     >
                       <RotateCcw className="h-3.5 w-3.5" />
-                      Ulangi Soal Materi Ini
+                      Ulangi Soal Topik Ini
                     </Button>
                   )}
                 </div>
@@ -959,7 +969,7 @@ export function MaterialReader({ topic }: MaterialReaderProps) {
               {prev ? (
                 <Link
                   href={`/materi/${prev.slug}`}
-                  className="rounded-xl border p-3.5 hover:border-emerald-500/50 hover:bg-muted/40 transition-all flex items-center gap-3"
+                  className="rounded-xl border p-3.5 hover:border-[#113057]/50 hover:bg-muted/40 transition-all flex items-center gap-3"
                 >
                   <ArrowLeft className="h-4 w-4 text-muted-foreground shrink-0" />
                   <div className="min-w-0">
@@ -992,18 +1002,18 @@ export function MaterialReader({ topic }: MaterialReaderProps) {
                 isQuizSubmitted ? (
                   <Link
                     href={`/materi/${next.slug}`}
-                    className="rounded-xl border border-emerald-500/40 bg-emerald-50/40 dark:bg-emerald-950/20 p-3.5 hover:bg-emerald-100/50 transition-all flex items-center justify-between gap-3 text-right"
+                    className="rounded-xl border border-[#113057]/40 bg-[#113057]/[0.05] dark:bg-blue-950/20 p-3.5 hover:bg-[#113057]/10 transition-all flex items-center justify-between gap-3 text-right"
                   >
                     <div className="min-w-0 flex-1">
-                      <span className="text-[10px] font-semibold uppercase tracking-wider text-emerald-700 dark:text-emerald-400 flex items-center justify-end gap-1">
-                        <Unlock className="h-3 w-3 text-emerald-600 dark:text-emerald-400" />
+                      <span className="text-[10px] font-semibold uppercase tracking-wider text-[#113057] dark:text-blue-400 flex items-center justify-end gap-1">
+                        <Unlock className="h-3 w-3 text-[#113057] dark:text-blue-400" />
                         Materi Berikutnya (Topik {next.order}) - Terbuka
                       </span>
                       <span className="text-xs sm:text-sm font-bold text-foreground truncate block">
                         {next.title}
                       </span>
                     </div>
-                    <ArrowRight className="h-4 w-4 text-emerald-600 shrink-0" />
+                    <ArrowRight className="h-4 w-4 text-[#113057] shrink-0" />
                   </Link>
                 ) : (
                   <button
@@ -1014,11 +1024,11 @@ export function MaterialReader({ topic }: MaterialReaderProps) {
                   >
                     <div className="min-w-0 flex-1">
                       <span className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground flex items-center justify-end gap-1">
-                        <Lock className="h-3 w-3" />
+                        <Lock className="h-3 w-3 text-[#FFB61E]" />
                         Topik {next.order} Terkunci
                       </span>
                       <span className="text-xs sm:text-sm font-bold text-foreground truncate block">
-                        Selesaikan Kuis di Atas untuk Membuka
+                        Jawab Kuis di Atas untuk Membuka
                       </span>
                     </div>
                     <ArrowRight className="h-4 w-4 text-muted-foreground shrink-0" />
@@ -1027,11 +1037,11 @@ export function MaterialReader({ topic }: MaterialReaderProps) {
               ) : (
                 <Link
                   href="/latihan"
-                  className="rounded-xl border border-emerald-600 bg-emerald-600 text-white p-3.5 hover:bg-emerald-700 transition-all flex items-center justify-between gap-3 text-right"
+                  className="rounded-xl border border-[#113057] bg-[#113057] text-white p-3.5 hover:bg-[#0A2342] transition-all flex items-center justify-between gap-3 text-right"
                 >
                   <div className="min-w-0 flex-1">
-                    <span className="text-[10px] font-semibold uppercase tracking-wider text-emerald-100 block">
-                      Seluruh Materi Selesai!
+                    <span className="text-[10px] font-semibold uppercase tracking-wider text-[#FFB61E] block">
+                      Semua Materi Selesai!
                     </span>
                     <span className="text-xs sm:text-sm font-bold truncate block">
                       Lanjut ke Modul Latihan Soal

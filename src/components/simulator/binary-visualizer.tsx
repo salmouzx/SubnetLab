@@ -28,7 +28,7 @@ export function BinaryVisualizer({ result }: BinaryVisualizerProps) {
                 "rounded-xl border bg-card p-3.5 shadow-xs transition-all",
                 isInteresting &&
                   result.classification.isUnicastCalculable &&
-                  "ring-1 ring-emerald-500/40 border-emerald-500/50"
+                  "ring-1 ring-[#FFB61E]/70 border-[#FFB61E]"
               )}
             >
               <div className="flex items-center justify-between mb-1.5">
@@ -38,7 +38,7 @@ export function BinaryVisualizer({ result }: BinaryVisualizerProps) {
                 {isInteresting && result.classification.isUnicastCalculable && (
                   <Badge
                     variant="outline"
-                    className="text-[10px] h-4 px-1.5 border-emerald-300 bg-emerald-50 text-emerald-700 dark:bg-emerald-950/50 dark:border-emerald-800 dark:text-emerald-300"
+                    className="text-[10px] h-4 px-1.5 border-[#FFB61E] bg-[#FFB61E]/20 text-[#92400E] dark:bg-[#FFB61E]/20 dark:border-[#FFB61E] dark:text-[#FFB61E]"
                   >
                     Oktet Aktif
                   </Badge>
@@ -65,7 +65,7 @@ export function BinaryVisualizer({ result }: BinaryVisualizerProps) {
 
               {result.classification.isUnicastCalculable && (
                 <div className="mt-1.5 pt-1.5 border-t flex items-center justify-between text-[10px] font-mono">
-                  <span className="text-blue-600 dark:text-blue-400">
+                  <span className="text-[#113057] dark:text-[#93C5FD]">
                     Net: <strong>{oct.networkDecimal}</strong>
                   </span>
                   <span className="text-amber-600 dark:text-amber-400">
@@ -83,21 +83,21 @@ export function BinaryVisualizer({ result }: BinaryVisualizerProps) {
         <CardHeader className="pb-3 border-b flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
           <div>
             <CardTitle className="text-sm font-semibold flex items-center gap-2">
-              <Binary className="h-4 w-4 text-emerald-600" />
+              <Binary className="h-4 w-4 text-[#113057]" />
               Struktur 32-Bit Linear & Pemisahan Bit (Network / Subnet / Host)
             </CardTitle>
             <p className="text-xs text-muted-foreground mt-0.5">
               Setiap kotak merepresentasikan 1 bit dari total 32-bit alamat IPv4 disertai penanda batas prefix /{result.prefix}.
             </p>
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex flex-wrap items-center gap-2">
             <button
               type="button"
               onClick={() => setShowBitwiseMatrix((prev) => !prev)}
               className={cn(
                 "text-xs px-2.5 py-1 rounded-md border font-medium transition-colors inline-flex items-center gap-1.5",
                 showBitwiseMatrix
-                  ? "border-emerald-600 bg-emerald-50 text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-300"
+                  ? "border-[#113057] bg-[#113057]/10 text-[#113057] dark:bg-[#113057]/20 dark:text-[#60A5FA]"
                   : "border-border bg-background text-muted-foreground hover:text-foreground"
               )}
             >
@@ -106,7 +106,7 @@ export function BinaryVisualizer({ result }: BinaryVisualizerProps) {
             </button>
             <Badge
               variant="outline"
-              className="font-mono text-xs border-emerald-200 bg-emerald-50 text-emerald-700 dark:bg-emerald-950/40 dark:border-emerald-800 dark:text-emerald-300"
+              className="font-mono text-xs border-[#113057]/30 bg-[#113057]/10 text-[#113057] dark:bg-[#113057]/20 dark:border-[#113057]/40 dark:text-[#60A5FA]"
             >
               Mask: {result.subnetMask} (/{result.prefix})
             </Badge>
@@ -122,8 +122,8 @@ export function BinaryVisualizer({ result }: BinaryVisualizerProps) {
                 const isPrefixBoundary = bit.bitNumber === result.prefix && result.prefix > 0 && result.prefix < 32
 
                 let boxClass =
-                  "border-emerald-700 bg-emerald-600 text-white font-bold shadow-xs"
-                let roleTitle = "Host Bit (Hijau Primer)"
+                  "border-[#D97706] bg-[#FFB61E] text-[#113057] font-bold shadow-xs"
+                let roleTitle = "Host Bit (Kuning)"
 
                 if (bit.role === "network") {
                   boxClass =
@@ -131,8 +131,8 @@ export function BinaryVisualizer({ result }: BinaryVisualizerProps) {
                   roleTitle = "Default Network Bit"
                 } else if (bit.role === "subnet") {
                   boxClass =
-                    "border-blue-700 bg-blue-600 text-white font-bold shadow-xs"
-                  roleTitle = "Bit Pinjam Subnet (Biru Primer)"
+                    "border-[#15803D] bg-[#16A34A] text-white font-bold shadow-xs"
+                  roleTitle = "Bit Pinjam Subnet (Hijau)"
                 }
 
                 return (
@@ -161,10 +161,10 @@ export function BinaryVisualizer({ result }: BinaryVisualizerProps) {
                         className="flex flex-col items-center justify-center px-0.5 self-stretch"
                         title={`Batas Prefix CIDR /${result.prefix}`}
                       >
-                        <span className="text-[9px] font-mono font-bold text-amber-600 dark:text-amber-400">
+                        <span className="text-[9px] font-mono font-bold text-[#113057] dark:text-[#93C5FD]">
                           /{result.prefix}
                         </span>
-                        <div className="w-0.5 flex-1 bg-amber-500 rounded-full my-0.5" />
+                        <div className="w-0.5 flex-1 bg-[#113057] dark:bg-[#93C5FD] rounded-full my-0.5" />
                       </div>
                     )}
 
@@ -192,14 +192,14 @@ export function BinaryVisualizer({ result }: BinaryVisualizerProps) {
                 </span>
                 Default Network ({Math.min(result.defaultNetworkBits, result.prefix)} bit)
               </span>
-              <span className="flex items-center gap-1.5 text-blue-700 dark:text-blue-400 font-medium">
-                <span className="w-3.5 h-3.5 rounded-xs bg-blue-600 text-white inline-flex items-center justify-center text-[9px] font-mono font-bold">
+              <span className="flex items-center gap-1.5 text-[#15803D] dark:text-green-400 font-medium">
+                <span className="w-3.5 h-3.5 rounded-xs bg-[#16A34A] text-white inline-flex items-center justify-center text-[9px] font-mono font-bold">
                   S
                 </span>
                 Bit Pinjam Subnet ({result.borrowedSubnetBits} bit)
               </span>
-              <span className="flex items-center gap-1.5 text-emerald-700 dark:text-emerald-400 font-medium">
-                <span className="w-3.5 h-3.5 rounded-xs bg-emerald-600 text-white inline-flex items-center justify-center text-[9px] font-mono font-bold">
+              <span className="flex items-center gap-1.5 text-[#92400E] dark:text-[#FFB61E] font-medium">
+                <span className="w-3.5 h-3.5 rounded-xs bg-[#FFB61E] text-[#113057] inline-flex items-center justify-center text-[9px] font-mono font-bold">
                   H
                 </span>
                 Bit Host ({result.hostBits} bit)
@@ -242,14 +242,14 @@ export function BinaryVisualizer({ result }: BinaryVisualizerProps) {
                   </tr>
                   {result.classification.isUnicastCalculable && (
                     <>
-                      <tr className="bg-blue-50/50 dark:bg-blue-950/20">
-                        <td className="py-1.5 font-sans font-bold text-blue-700 dark:text-blue-400 pl-2">
+                      <tr className="bg-[#113057]/6 dark:bg-[#113057]/30">
+                        <td className="py-1.5 font-sans font-bold text-[#113057] dark:text-[#93C5FD] pl-2">
                           Network ID (IP AND Mask)
                         </td>
-                        <td className="py-1.5 font-bold text-blue-700 dark:text-blue-400">
+                        <td className="py-1.5 font-bold text-[#113057] dark:text-[#93C5FD]">
                           {result.networkAddress}
                         </td>
-                        <td className="py-1.5 tracking-wider font-bold text-blue-700 dark:text-blue-400">
+                        <td className="py-1.5 tracking-wider font-bold text-[#113057] dark:text-[#93C5FD]">
                           {result.networkBinaryDotted}
                         </td>
                       </tr>

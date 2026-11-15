@@ -58,31 +58,33 @@ export function MaterialCatalog() {
 
   return (
     <div className="flex flex-col gap-6">
-      {/* Header & Progress Overview */}
-      <section className="rounded-2xl border bg-gradient-to-r from-emerald-50/70 via-background to-background p-5 sm:p-7 dark:from-emerald-950/20 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+      {/* Header & Progress Overview (Solid Navy #113057 + Yellow #FFB61E - Clean) */}
+      <section className="rounded-2xl border border-[#113057] bg-[#113057] p-5 sm:p-7 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
         <div className="flex flex-col gap-2 max-w-2xl">
-          <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-foreground">
-            Materi Pengalamatan IPv4 & Subnetting Kelas C
+          <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
+            Materi Pengalamatan{" "}
+            <span className="text-[#FFB61E]">IPv4 & Subnetting</span> Kelas C
           </h1>
-          <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-            Kurikulum berjenjang terstruktur dari pengenalan IPv4 hingga studi kasus subnetting Kelas C. Selesaikan 2 soal pemahaman materi dan klik <strong>Kirim Jawaban</strong> untuk membuka topik berikutnya.
+          <p className="text-xs sm:text-sm text-white/85 leading-relaxed">
+            Belajar urut dari nol sampai mahir subnetting Kelas C. Jawab 2 soal singkat di tiap bab dan klik{" "}
+            <strong className="text-white">Kirim Jawaban</strong> buat buka topik berikutnya.
           </p>
         </div>
 
         {/* Kartu Ringkasan Progres Belajar */}
-        <div className="rounded-xl border bg-card p-4 shadow-xs min-w-[280px] sm:min-w-[320px] flex flex-col gap-3">
+        <div className="rounded-xl border border-white/15 bg-white p-4 shadow-xs w-full lg:w-auto lg:min-w-[320px] flex flex-col gap-3 dark:bg-card dark:border-border">
           <div className="flex items-center justify-between">
             <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">
-              Progres Kelulusan Materi
+              Progres Belajarmu
             </span>
-            <span className="text-xs font-mono font-bold text-emerald-700 dark:text-emerald-400">
+            <span className="text-xs font-mono font-bold text-[#113057] dark:text-blue-400">
               {completedCount}/{totalCount} Topik ({progressPercent}%)
             </span>
           </div>
 
-          <div className="h-2 w-full rounded-full bg-muted overflow-hidden">
+          <div className="h-2.5 w-full rounded-full bg-slate-100 dark:bg-muted overflow-hidden">
             <div
-              className="h-full bg-emerald-600 transition-all duration-300 rounded-full"
+              className="h-full bg-[linear-gradient(90deg,#113057_0%,#FFB61E_100%)] transition-all duration-300 rounded-full"
               style={{ width: `${progressPercent}%` }}
             />
           </div>
@@ -92,14 +94,14 @@ export function MaterialCatalog() {
               href={`/materi/${nextRecommendedTopic.slug}`}
               className={cn(
                 buttonVariants({ size: "sm" }),
-                "w-full gap-1.5 bg-emerald-600 text-white hover:bg-emerald-700"
+                "w-full gap-1.5 bg-[#113057] text-white hover:bg-[#0A2342]"
               )}
             >
               <PlayCircle className="h-3.5 w-3.5" />
               {completedCount === 0
                 ? "Mulai Topik 1"
                 : completedCount === totalCount
-                  ? "Ulangi Pembelajaran"
+                  ? "Ulas Materi Lagi"
                   : `Lanjut: Topik ${nextRecommendedTopic.order}`}
               <ArrowRight className="h-3.5 w-3.5" />
             </Link>
@@ -124,8 +126,8 @@ export function MaterialCatalog() {
                 className={cn(
                   "px-3 py-1.5 rounded-lg text-xs font-semibold border transition-all inline-flex items-center gap-1.5",
                   isSelected
-                    ? "border-emerald-600 bg-emerald-600 text-white shadow-xs"
-                    : "border-border bg-card text-muted-foreground hover:text-foreground hover:bg-muted/50"
+                    ? "border-[#113057] bg-[#113057] text-white shadow-xs"
+                    : "border-border bg-card text-muted-foreground hover:text-foreground hover:border-[#4A90D9]/50 hover:bg-blue-50/40"
                 )}
               >
                 <Layers className="h-3.5 w-3.5" />
@@ -136,12 +138,12 @@ export function MaterialCatalog() {
         </div>
 
         <span className="text-xs text-muted-foreground flex items-center gap-1.5">
-          <Lock className="h-3.5 w-3.5 text-amber-600 dark:text-amber-400" />
-          Topik baru terbuka setelah mengirim jawaban kuis pada topik sebelumnya.
+          <Lock className="h-3.5 w-3.5 text-[#FFB61E]" />
+          Topik baru terbuka setelah kamu kirim jawaban di topik sebelumnya.
         </span>
       </div>
 
-      {/* Grid 12 Kartu Materi (Warna Kartu Tetap Terang & Normal, Hanya Tombol Aksi yang Abu & Terkunci) */}
+      {/* Grid 12 Kartu Materi */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {filteredMaterials.map((topic) => {
           const isCompleted = progress.completedSlugs.includes(topic.slug)
@@ -152,11 +154,11 @@ export function MaterialCatalog() {
             <Card
               key={topic.id}
               className={cn(
-                "shadow-xs flex flex-col justify-between transition-all relative overflow-hidden bg-card border",
+                "shadow-[0_2px_10px_rgba(10,35,66,0.04)] flex flex-col justify-between transition-all relative overflow-hidden bg-card border",
                 isCompleted
-                  ? "border-emerald-500/40 bg-emerald-50/15 dark:bg-emerald-950/10"
+                  ? "border-[#113057]/40 border-t-4 border-t-[#113057] bg-blue-50/10 dark:bg-blue-950/10"
                   : isUnlocked
-                    ? "hover:border-emerald-500/60 ring-1 ring-emerald-500/10"
+                    ? "border-[#E0E0E0] hover:border-[#113057]/60 hover:shadow-[0_12px_28px_rgba(10,35,66,0.08)]"
                     : "hover:border-border"
               )}
             >
@@ -167,8 +169,10 @@ export function MaterialCatalog() {
                       className={cn(
                         "flex h-7 w-7 items-center justify-center rounded-lg text-xs font-mono font-bold border",
                         isCompleted
-                          ? "bg-emerald-600 text-white border-emerald-600"
-                          : "bg-muted text-foreground border-border"
+                          ? "bg-[#113057] text-white border-[#113057]"
+                          : isUnlocked
+                            ? "bg-[#113057]/10 text-[#113057] border-[#113057]/25"
+                            : "bg-muted text-foreground border-border"
                       )}
                     >
                       {String(topic.order).padStart(2, "0")}
@@ -180,8 +184,8 @@ export function MaterialCatalog() {
 
                   {/* Status & Highlight Skor */}
                   {isCompleted ? (
-                    <div className="inline-flex items-center gap-1.5 rounded-md border border-[#86EFAC] bg-[#DCFCE7] px-2.5 py-0.5 text-[11px] font-mono font-bold text-[#166534]">
-                      <CheckCircle2 className="h-3 w-3 shrink-0" />
+                    <div className="inline-flex items-center gap-1.5 rounded-md border border-[#FFB61E] bg-[#FFB61E]/15 px-2.5 py-0.5 text-[11px] font-mono font-bold text-[#92400E] dark:text-amber-300">
+                      <CheckCircle2 className="h-3 w-3 shrink-0 text-[#D97706]" />
                       <span>Selesai</span>
                       {quizRecord && (
                         <>
@@ -193,17 +197,17 @@ export function MaterialCatalog() {
                   ) : isUnlocked ? (
                     <Badge
                       variant="outline"
-                      className="text-[11px] border-emerald-300 bg-emerald-50 text-emerald-700 dark:bg-emerald-950/40 dark:border-emerald-800 dark:text-emerald-300 gap-1"
+                      className="text-[11px] border-[#113057]/30 bg-[#113057]/10 text-[#113057] dark:bg-blue-950/40 dark:border-blue-800 dark:text-blue-300 gap-1"
                     >
-                      <Unlock className="h-3 w-3 text-emerald-600" />
+                      <Unlock className="h-3 w-3 text-[#113057]" />
                       Terbuka
                     </Badge>
                   ) : (
                     <Badge
                       variant="outline"
-                      className="text-[11px] border-amber-300 bg-amber-50 text-amber-800 dark:bg-amber-950/40 dark:border-amber-800 dark:text-amber-300 gap-1"
+                      className="text-[11px] border-[#FFB61E]/60 bg-amber-50 text-amber-800 dark:bg-amber-950/40 dark:border-amber-800 dark:text-amber-300 gap-1"
                     >
-                      <Lock className="h-3 w-3 text-amber-600" />
+                      <Lock className="h-3 w-3 text-[#D97706]" />
                       Terkunci
                     </Badge>
                   )}
@@ -212,7 +216,7 @@ export function MaterialCatalog() {
                 <CardTitle className="text-base font-bold leading-snug">
                   <Link
                     href={`/materi/${topic.slug}`}
-                    className="text-foreground hover:text-emerald-600 transition-colors"
+                    className="text-foreground hover:text-[#113057] transition-colors"
                   >
                     {topic.title}
                   </Link>
@@ -234,7 +238,7 @@ export function MaterialCatalog() {
                   </span>
                 </div>
 
-                {/* Tombol Aksi: Terbuka (Hijau/Outline) vs Belum Terbuka (Abu & Disabled) */}
+                {/* Tombol Aksi */}
                 <div className="flex items-center gap-2 pt-1">
                   {isUnlocked ? (
                     <>
@@ -245,7 +249,7 @@ export function MaterialCatalog() {
                           "flex-1 gap-1.5 text-xs",
                           isCompleted
                             ? "bg-muted text-foreground hover:bg-muted/80 border"
-                            : "bg-emerald-600 text-white hover:bg-emerald-700"
+                            : "bg-[#113057] text-white hover:bg-[#0A2342]"
                         )}
                       >
                         <BookOpen className="h-3.5 w-3.5" />
@@ -256,11 +260,11 @@ export function MaterialCatalog() {
                         href={`/simulator?ip=${encodeURIComponent(topic.simulatorPreset.ip)}&prefix=${topic.simulatorPreset.prefix}`}
                         className={cn(
                           buttonVariants({ variant: "outline", size: "sm" }),
-                          "gap-1 text-xs px-2.5"
+                          "gap-1 text-xs px-2.5 border-[#113057]/25 hover:bg-blue-50/50 hover:text-[#113057]"
                         )}
                         title="Buka contoh di Simulator"
                       >
-                        <Calculator className="h-3.5 w-3.5 text-emerald-600" />
+                        <Calculator className="h-3.5 w-3.5 text-[#113057]" />
                         Simulasi
                       </Link>
                     </>
@@ -283,19 +287,19 @@ export function MaterialCatalog() {
       </div>
 
       {/* Bottom CTA Banner ke Simulator & Latihan */}
-      <div className="rounded-2xl border bg-card p-5 shadow-xs flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+      <div className="rounded-2xl border border-[#E0E0E0] border-l-4 border-l-[#FFB61E] bg-card p-5 shadow-[0_2px_10px_rgba(10,35,66,0.04)] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
           <h3 className="text-sm font-bold text-foreground">
-            Ingin langsung mencoba simulasi atau latihan mandiri?
+            Mau langsung uji hitungan di Simulator atau Latihan?
           </h3>
           <p className="text-xs text-muted-foreground">
-            Simulator Kelas A–E dan Bank Latihan dapat diakses kapan saja untuk menguji pemahaman subnetting Anda.
+            Simulator Kelas A-E dan Bank Latihan terbuka kapan saja kamu mau pakai.
           </p>
         </div>
         <div className="flex flex-wrap items-center gap-2.5 shrink-0">
           <Link
             href="/simulator"
-            className={cn(buttonVariants({ variant: "outline", size: "sm" }), "gap-1.5")}
+            className={cn(buttonVariants({ variant: "outline", size: "sm" }), "gap-1.5 border-[#113057]/30 text-[#113057] hover:bg-blue-50/60")}
           >
             <Calculator className="h-3.5 w-3.5" />
             Buka Simulator
@@ -304,7 +308,7 @@ export function MaterialCatalog() {
             href="/latihan"
             className={cn(
               buttonVariants({ size: "sm" }),
-              "gap-1.5 bg-emerald-600 text-white hover:bg-emerald-700"
+              "gap-1.5 bg-[#113057] text-white hover:bg-[#0A2342]"
             )}
           >
             <GraduationCap className="h-3.5 w-3.5" />

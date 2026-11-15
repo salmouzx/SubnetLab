@@ -262,14 +262,14 @@ export function QuizWorkbench() {
         ? "border-[#FCA5A5] bg-[#FEE2E2] text-[#991B1B] animate-pulse"
         : remainingSeconds <= 900
           ? "border-[#FCD34D] bg-[#FEF3C7] text-[#92400E]"
-          : "border-emerald-300 bg-emerald-50 text-emerald-800 dark:bg-emerald-950/50 dark:border-emerald-800 dark:text-emerald-300"
+          : "border-[#113057]/30 bg-[#113057]/10 text-[#113057] dark:bg-[#113057]/20 dark:border-[#113057]/40 dark:text-[#60A5FA]"
 
     return (
       <div className="flex flex-col gap-5">
         {/* Sticky Top Exam Bar */}
         <div className="sticky top-16 z-30 rounded-2xl border bg-card/95 backdrop-blur p-4 shadow-sm flex flex-wrap items-center justify-between gap-4">
           <div className="flex flex-wrap items-center gap-2.5">
-            <Badge className="bg-emerald-600 text-white hover:bg-emerald-600">
+            <Badge className="bg-[#113057] text-white hover:bg-[#113057]">
               {activeDraft.attemptType === "utama"
                 ? "Kuis Utama (Kesempatan 1)"
                 : "Kuis Remedial (Kesempatan Terakhir)"}
@@ -298,7 +298,7 @@ export function QuizWorkbench() {
               type="button"
               size="sm"
               onClick={() => setConfirmFinishOpen(true)}
-              className="gap-1.5 bg-emerald-600 text-white hover:bg-emerald-700"
+              className="gap-1.5 bg-[#FFB61E] text-[#0A2342] font-semibold hover:bg-[#F59E0B]"
             >
               <Send className="h-3.5 w-3.5" />
               <span className="hidden sm:inline">Selesaikan Kuis</span>
@@ -323,19 +323,19 @@ export function QuizWorkbench() {
                   Konfirmasi Pengiriman Jawaban Kuis
                 </h2>
                 <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                  Anda telah menjawab{" "}
+                  Kamu sudah menjawab{" "}
                   <strong className="text-foreground">
-                    {answeredCount} dari {QUIZ_TOTAL_QUESTIONS} butir soal
+                    {answeredCount} dari {QUIZ_TOTAL_QUESTIONS} soal
                   </strong>
                   .{" "}
                   {unansweredCount > 0 ? (
                     <span className="text-amber-800 dark:text-amber-300 font-semibold">
-                      Masih terdapat {unansweredCount} soal yang belum dijawab!{" "}
+                      Masih ada {unansweredCount} soal yang kosong!{" "}
                     </span>
                   ) : (
-                    <span>Seluruh butir soal telah terjawab. </span>
+                    <span>Semua soal sudah terisi. </span>
                   )}
-                  Setelah dikirim, sesi ini akan dikunci dan sistem akan menampilkan nilai akhir beserta pembahasan.
+                  Setelah dikirim, jawaban dikunci dan skor akhir serta pembahasan langsung muncul.
                 </p>
               </div>
             </div>
@@ -354,7 +354,7 @@ export function QuizWorkbench() {
                 type="button"
                 size="sm"
                 onClick={handleFinalizeQuiz}
-                className="gap-1.5 bg-emerald-600 text-white hover:bg-emerald-700 shadow-xs"
+                className="gap-1.5 bg-[#113057] text-white hover:bg-[#0A2342] shadow-xs"
               >
                 <CheckCircle2 className="h-4 w-4" />
                 Ya, Kirim Jawaban Sekarang
@@ -366,11 +366,11 @@ export function QuizWorkbench() {
         {/* Layout 2 Kolom: Soal Aktif (Kiri) & Navigasi Nomor 1-20 (Kanan) */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
           {/* Kolom Kiri: Kartu Soal Aktif */}
-          <Card className="lg:col-span-8 shadow-xs">
+          <Card className="lg:col-span-8 min-w-0 shadow-xs">
             <CardHeader className="pb-3 border-b">
               <div className="flex flex-wrap items-center justify-between gap-2">
                 <div className="flex items-center gap-2">
-                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-emerald-600 text-white text-xs font-mono font-bold">
+                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-[#113057] text-white text-xs font-mono font-bold">
                     {currentIdx + 1}
                   </span>
                   <Badge variant="secondary" className="text-[11px]">
@@ -408,7 +408,7 @@ export function QuizWorkbench() {
                       className={cn(
                         "text-left rounded-xl border p-3.5 text-xs sm:text-sm transition-all flex items-center justify-between gap-3 cursor-pointer",
                         isSelected
-                          ? "border-emerald-600 bg-emerald-50/90 text-emerald-950 font-semibold ring-1 ring-emerald-600/30 dark:bg-emerald-950/50 dark:text-emerald-100"
+                          ? "border-[#113057] bg-[#113057]/10 text-[#0A2342] font-semibold ring-1 ring-[#113057]/30 dark:bg-[#113057]/25 dark:text-white"
                           : "border-border bg-background hover:bg-muted/50 text-foreground"
                       )}
                     >
@@ -417,7 +417,7 @@ export function QuizWorkbench() {
                           className={cn(
                             "flex h-7 w-7 shrink-0 items-center justify-center rounded-md font-mono text-xs font-bold border",
                             isSelected
-                              ? "bg-emerald-600 text-white border-emerald-600"
+                              ? "bg-[#113057] text-white border-[#113057]"
                               : "bg-muted/50 text-foreground border-border"
                           )}
                         >
@@ -429,7 +429,7 @@ export function QuizWorkbench() {
                       </div>
 
                       {isSelected && (
-                        <Check className="h-4 w-4 shrink-0 text-emerald-600" />
+                        <Check className="h-4 w-4 shrink-0 text-[#113057] dark:text-[#60A5FA]" />
                       )}
                     </button>
                   )
@@ -470,7 +470,7 @@ export function QuizWorkbench() {
                     type="button"
                     size="sm"
                     onClick={() => handleGoToQuestion(currentIdx + 1)}
-                    className="gap-1.5 bg-emerald-600 text-white hover:bg-emerald-700"
+                    className="gap-1.5 bg-[#113057] text-white hover:bg-[#0A2342]"
                   >
                     Soal Berikutnya
                     <ArrowRight className="h-3.5 w-3.5" />
@@ -480,7 +480,7 @@ export function QuizWorkbench() {
                     type="button"
                     size="sm"
                     onClick={() => setConfirmFinishOpen(true)}
-                    className="gap-1.5 bg-emerald-600 text-white hover:bg-emerald-700"
+                    className="gap-1.5 bg-[#FFB61E] text-[#0A2342] font-semibold hover:bg-[#F59E0B]"
                   >
                     <Send className="h-3.5 w-3.5" />
                     Selesaikan Kuis
@@ -491,7 +491,7 @@ export function QuizWorkbench() {
           </Card>
 
           {/* Kolom Kanan: Panel Navigasi Nomor Soal (1 - 20) */}
-          <Card className="lg:col-span-4 shadow-xs">
+          <Card className="lg:col-span-4 min-w-0 shadow-xs">
             <CardHeader className="pb-3 border-b">
               <CardTitle className="text-sm font-bold flex items-center justify-between">
                 <span>Navigasi Nomor Soal</span>
@@ -518,9 +518,9 @@ export function QuizWorkbench() {
                         isQFlagged
                           ? "border-amber-400 bg-amber-100 text-amber-900 dark:bg-amber-950/60 dark:text-amber-200"
                           : isAnswered
-                            ? "border-emerald-600 bg-emerald-600 text-white"
+                            ? "border-[#113057] bg-[#113057] text-white"
                             : "border-border bg-muted/40 text-muted-foreground hover:text-foreground",
-                        isCurrent && "ring-2 ring-emerald-600 ring-offset-2"
+                        isCurrent && "ring-2 ring-[#FFB61E] ring-offset-2"
                       )}
                       title={`Soal ${idx + 1}`}
                     >
@@ -533,7 +533,7 @@ export function QuizWorkbench() {
               {/* Keterangan Warna Status Soal */}
               <div className="grid grid-cols-3 gap-2 pt-2 border-t text-[11px] text-muted-foreground">
                 <div className="flex items-center gap-1.5">
-                  <span className="h-3 w-3 rounded-xs bg-emerald-600 inline-block shrink-0" />
+                  <span className="h-3 w-3 rounded-xs bg-[#113057] inline-block shrink-0" />
                   <span>Terjawab</span>
                 </div>
                 <div className="flex items-center gap-1.5">
@@ -549,7 +549,7 @@ export function QuizWorkbench() {
               <Button
                 type="button"
                 onClick={() => setConfirmFinishOpen(true)}
-                className="w-full gap-1.5 bg-emerald-600 text-white hover:bg-emerald-700 mt-1"
+                className="w-full gap-1.5 bg-[#113057] text-white hover:bg-[#0A2342] mt-1"
               >
                 <Send className="h-3.5 w-3.5" />
                 Selesaikan & Kirim Kuis
@@ -594,10 +594,10 @@ export function QuizWorkbench() {
 
                 <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed max-w-2xl">
                   {viewingRecord.passed
-                    ? "Selamat! Anda telah melampaui standar kelulusan minimal (KKM 75). Berikut adalah rincian penilaian dan pembahasan transparan untuk ke-20 butir soal."
+                    ? "Selamat! Kamu lolos batas minimum (KKM 75). Cek rincian nilai dan pembahasan ke-20 soal di bawah ini."
                     : canTakeRemedial
-                      ? "Nilai Anda pada kesempatan pertama belum mencapai KKM 75 (minimal 15 soal benar). Silakan pelajari pembahasan di bawah ini terlebih dahulu, kemudian gunakan 1x Kesempatan Remedial Anda."
-                      : "Anda telah menyelesaikan seluruh kesempatan ujian kuis. Silakan tinjau pembahasan lengkap di bawah ini untuk memperdalam pemahaman Anda."}
+                      ? "Skor kesempatan pertama masih di bawah KKM 75 (minimal 15 soal benar). Baca pembahasannya dulu, lalu ambil 1x Kesempatan Remedial."
+                      : "Semua kesempatan kuis sudah dipakai. Tinjau lagi pembahasan di bawah ini untuk mengulas jawabanmu."}
                 </p>
               </div>
 
@@ -618,7 +618,7 @@ export function QuizWorkbench() {
                   <Button
                     type="button"
                     onClick={() => handleStartQuizConfirmed("remedial")}
-                    className="gap-1.5 bg-emerald-600 text-white hover:bg-emerald-700"
+                    className="gap-1.5 bg-[#113057] text-white hover:bg-[#0A2342]"
                   >
                     <RotateCcw className="h-4 w-4" />
                     Ambil Kuis Remedial (Kesempatan Terakhir: 1x)
@@ -637,7 +637,7 @@ export function QuizWorkbench() {
                   className={cn(
                     "text-base font-mono font-extrabold",
                     viewingRecord.passed
-                      ? "text-emerald-700 dark:text-emerald-400"
+                      ? "text-[#166534] dark:text-emerald-400"
                       : "text-amber-700 dark:text-amber-400"
                   )}
                 >
@@ -648,7 +648,7 @@ export function QuizWorkbench() {
                 <span className="text-[11px] text-muted-foreground">
                   Jawaban Benar (@5 Poin)
                 </span>
-                <span className="text-base font-mono font-extrabold text-emerald-700 dark:text-emerald-400">
+                <span className="text-base font-mono font-extrabold text-[#166534] dark:text-emerald-400">
                   {viewingRecord.correctCount} dari {QUIZ_TOTAL_QUESTIONS} Soal
                 </span>
               </div>
@@ -674,7 +674,7 @@ export function QuizWorkbench() {
           {/* Daftar Pembahasan Lengkap 20 Butir Soal */}
           <div className="flex flex-col gap-4">
             <h2 className="text-base sm:text-lg font-extrabold text-foreground flex items-center gap-2">
-              <ClipboardCheck className="h-5 w-5 text-emerald-600" />
+              <ClipboardCheck className="h-5 w-5 text-[#113057]" />
               Ulasan & Pembahasan Lengkap 20 Butir Soal
             </h2>
 
@@ -691,7 +691,7 @@ export function QuizWorkbench() {
                   <CardHeader className="pb-3 border-b">
                     <div className="flex flex-wrap items-center justify-between gap-2">
                       <div className="flex items-center gap-2">
-                        <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-emerald-600 text-white text-xs font-mono font-bold">
+                        <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-[#113057] text-white text-xs font-mono font-bold">
                           {qIdx + 1}
                         </span>
                         <Badge variant="secondary" className="text-[11px]">
@@ -777,7 +777,7 @@ export function QuizWorkbench() {
 
                     {/* Kotak Pembahasan */}
                     <div className="rounded-xl border bg-background p-3.5 text-xs flex flex-col gap-2">
-                      <span className="font-bold text-emerald-700 dark:text-emerald-400 uppercase tracking-wider text-[11px]">
+                      <span className="font-bold text-[#113057] dark:text-[#60A5FA] uppercase tracking-wider text-[11px]">
                         Pembahasan Soal {qIdx + 1}:
                       </span>
                       <p className="text-foreground/90 leading-relaxed">
@@ -801,7 +801,7 @@ export function QuizWorkbench() {
           </div>
 
           {/* Panel Aksi Bawah Setelah Membaca Pembahasan Kuis */}
-          <Card className="shadow-xs border-emerald-500/40">
+          <Card className="shadow-xs border-[#113057]/30">
             <CardContent className="p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
               <div className="flex flex-col gap-0.5">
                 <span className="text-xs sm:text-sm font-bold text-foreground">
@@ -813,10 +813,10 @@ export function QuizWorkbench() {
                 </span>
                 <span className="text-xs text-muted-foreground">
                   {viewingRecord.passed
-                    ? "Anda telah lulus evaluasi akhir. Seluruh jawaban dan pembahasan tetap tersimpan dan dapat ditinjau kapan saja."
+                    ? "Kamu lulus evaluasi akhir. Jawaban dan pembahasan tetap tersimpan untuk ditinjau kapan saja."
                     : canTakeRemedial
-                      ? "Setelah mempelajari pembahasan di atas, silakan gunakan 1x kesempatan Remedial Anda untuk mencapai KKM 75."
-                      : "Seluruh 2 kali kesempatan kuis (Utama & Remedial) telah digunakan."}
+                      ? "Setelah baca pembahasannya, kamu bisa ambil 1x kesempatan Remedial untuk menembus KKM 75."
+                      : "Semua 2 kesempatan kuis (Utama & Remedial) sudah terpakai."}
                 </span>
               </div>
 
@@ -835,7 +835,7 @@ export function QuizWorkbench() {
                   <Button
                     type="button"
                     onClick={() => handleStartQuizConfirmed("remedial")}
-                    className="gap-1.5 bg-emerald-600 text-white hover:bg-emerald-700"
+                    className="gap-1.5 bg-[#113057] text-white hover:bg-[#0A2342]"
                   >
                     <PlayCircle className="h-4 w-4" />
                     Lanjut ke Percobaan 2 (Kuis Remedial - 60 Menit)
@@ -860,23 +860,23 @@ export function QuizWorkbench() {
   return (
     <div className="flex flex-col gap-6">
       {/* Header Portal Kuis */}
-      <section className="rounded-2xl border bg-gradient-to-r from-emerald-50/70 via-background to-background p-5 sm:p-7 dark:from-emerald-950/20 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+      <section className="rounded-2xl border border-[#113057] bg-[#113057] p-5 sm:p-7 text-white flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
         <div className="flex flex-col gap-2 max-w-2xl">
-          <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-foreground">
-            Portal Kuis Evaluasi IPv4 & Subnetting Kelas C
+          <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
+            Portal Kuis Evaluasi Subnetting Kelas C
           </h1>
-          <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-            Evaluasi akhir komprehensif untuk mengukur penguasaan konsep dan perhitungan subnetting IPv4 Kelas C. Baca ketentuan ujian dan pastikan syarat latihan telah terpenuhi sebelum memulai waktu hitung mundur.
+          <p className="text-xs sm:text-sm text-white/85 leading-relaxed">
+            Ukur pemahamanmu lewat 20 soal pilihan ganda berdurasi 60 menit. Baca aturannya di bawah dan pastikan latihanmu sudah terbuka sebelum timer dimulai.
           </p>
         </div>
 
         {/* Kartu Ringkas Status & Highlight Skor Kelulusan Kuis */}
         <div
           className={cn(
-            "rounded-xl border p-4 shadow-xs min-w-[290px] sm:min-w-[350px] flex items-center justify-between gap-4",
+            "rounded-xl border p-4 w-full lg:w-auto lg:min-w-[350px] flex items-center justify-between gap-4 text-foreground",
             quizProgress.passed
-              ? "border-[#86EFAC] bg-[#DCFCE7]/35 dark:bg-emerald-950/25"
-              : "bg-card"
+              ? "border-[#86EFAC] bg-[#DCFCE7] dark:bg-emerald-950/90"
+              : "bg-white border-white/15 dark:bg-card dark:border-border"
           )}
         >
           <div className="flex flex-col gap-1.5 flex-1">
@@ -887,11 +887,11 @@ export function QuizWorkbench() {
             <div>
               {quizProgress.passed ? (
                 <span className="inline-flex items-center gap-1 text-xs font-extrabold text-[#166534] dark:text-emerald-300">
-                  <CheckCircle2 className="h-4 w-4 shrink-0 text-emerald-600" />
+                  <CheckCircle2 className="h-4 w-4 shrink-0 text-[#166534] dark:text-emerald-400" />
                   LULUS EVALUASI
                 </span>
               ) : hasMainAttempt ? (
-                <span className="text-xs font-bold text-amber-800 dark:text-amber-300">
+                <span className="text-xs font-bold text-[#92400E] dark:text-[#FFB61E]">
                   Belum Mencapai KKM {QUIZ_PASSING_SCORE}
                 </span>
               ) : (
@@ -903,7 +903,7 @@ export function QuizWorkbench() {
 
             <div className="h-1.5 w-full rounded-sm bg-muted overflow-hidden">
               <div
-                className="h-full bg-emerald-600 transition-all duration-300"
+                className="h-full bg-[linear-gradient(90deg,#113057_0%,#FFB61E_100%)] transition-all duration-300"
                 style={{ width: `${Math.min(quizProgress.bestScore, 100)}%` }}
               />
             </div>
@@ -920,9 +920,9 @@ export function QuizWorkbench() {
             className={cn(
               "rounded-lg border px-3.5 py-2.5 flex flex-col items-center justify-center shrink-0 min-w-[90px]",
               quizProgress.passed
-                ? "border-[#166534]/30 bg-[#DCFCE7] text-[#166534] dark:bg-emerald-900/50 dark:text-emerald-200 dark:border-emerald-700"
+                ? "border-[#166534]/30 bg-white/80 text-[#166534] dark:bg-emerald-900/50 dark:text-emerald-200 dark:border-emerald-700"
                 : hasMainAttempt
-                  ? "border-amber-300 bg-amber-50 text-amber-900 dark:bg-amber-950/50 dark:text-amber-200"
+                  ? "border-[#FFB61E] bg-[#FFB61E]/20 text-[#92400E] dark:bg-[#FFB61E]/20 dark:text-[#FFB61E]"
                   : "border-border bg-muted/40 text-muted-foreground"
             )}
           >
@@ -954,7 +954,7 @@ export function QuizWorkbench() {
                 </h2>
 
                 <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                  Untuk membuka tombol Mulai Kuis Evaluasi, Anda diwajibkan menyelesaikan minimal 1 kali percobaan (10 butir soal) pada modul Latihan terlebih dahulu.
+                  Untuk membuka tombol Mulai Kuis Evaluasi, selesaikan minimal 1 percobaan (10 soal) di modul Latihan dulu.
                 </p>
               </div>
             </div>
@@ -963,7 +963,7 @@ export function QuizWorkbench() {
               href="/latihan"
               className={cn(
                 buttonVariants({ size: "default" }),
-                "gap-1.5 bg-emerald-600 text-white hover:bg-emerald-700 shrink-0"
+                "gap-1.5 bg-[#113057] text-white hover:bg-[#0A2342] shrink-0"
               )}
             >
               <PencilLine className="h-4 w-4" />
@@ -978,7 +978,7 @@ export function QuizWorkbench() {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <Card className="shadow-xs">
           <CardContent className="p-4 flex items-start gap-3">
-            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-emerald-50 text-emerald-700 border border-emerald-200 dark:bg-emerald-950/50 dark:border-emerald-800 dark:text-emerald-300">
+            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[#113057]/10 text-[#113057] border border-[#113057]/25 dark:bg-[#113057]/20 dark:border-[#113057]/40 dark:text-[#60A5FA]">
               <ClipboardCheck className="h-4 w-4" />
             </div>
             <div className="flex flex-col gap-0.5">
@@ -995,7 +995,7 @@ export function QuizWorkbench() {
 
         <Card className="shadow-xs">
           <CardContent className="p-4 flex items-start gap-3">
-            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-blue-50 text-blue-700 border border-blue-200 dark:bg-blue-950/50 dark:border-blue-800 dark:text-blue-300">
+            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[#113057]/10 text-[#113057] border border-[#113057]/25 dark:bg-[#113057]/30 dark:border-[#113057]/50 dark:text-[#93C5FD]">
               <Clock className="h-4 w-4" />
             </div>
             <div className="flex flex-col gap-0.5">
@@ -1049,7 +1049,7 @@ export function QuizWorkbench() {
       <Card className="shadow-xs">
         <CardHeader className="pb-3 border-b">
           <CardTitle className="text-base font-bold flex items-center gap-2">
-            <BookOpen className="h-4 w-4 text-emerald-600" />
+            <BookOpen className="h-4 w-4 text-[#113057]" />
             Ketentuan & Tata Tertib Pengerjaan Kuis
           </CardTitle>
         </CardHeader>
@@ -1057,35 +1057,35 @@ export function QuizWorkbench() {
         <CardContent className="pt-4 flex flex-col gap-5">
           <ul className="flex flex-col gap-2.5 text-xs sm:text-sm text-foreground/90">
             <li className="flex items-start gap-2.5">
-              <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded bg-emerald-100 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300 text-xs font-bold mt-0.5">
+              <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded bg-[#113057]/10 text-[#113057] dark:bg-[#113057]/25 dark:text-[#60A5FA] text-xs font-bold mt-0.5">
                 1
               </span>
               <span className="leading-relaxed">
-                <strong>Syarat Pembuka Kuis:</strong> Peserta wajib menyelesaikan minimal <strong>1 kali percobaan latihan</strong> pada halaman Latihan sebelum tombol mulai kuis dapat diaktifkan.
+                <strong>Syarat Pembuka Kuis:</strong> Selesaikan minimal <strong>1 kali percobaan</strong> di halaman Latihan agar tombol mulai kuis aktif.
               </span>
             </li>
             <li className="flex items-start gap-2.5">
-              <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded bg-emerald-100 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300 text-xs font-bold mt-0.5">
+              <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded bg-[#113057]/10 text-[#113057] dark:bg-[#113057]/25 dark:text-[#60A5FA] text-xs font-bold mt-0.5">
                 2
               </span>
               <span className="leading-relaxed">
-                <strong>Waktu Pengerjaan 60 Menit:</strong> Timer hitung mundur selama 60 menit akan berjalan segera setelah Anda menekan konfirmasi mulai. Apabila waktu habis, jawaban yang sudah dipilih akan dikirim secara otomatis (<em>Auto-Submit</em>).
+                <strong>Waktu Pengerjaan 60 Menit:</strong> Timer langsung berjalan begitu kamu konfirmasi mulai. Jika waktu habis, jawaban otomatis terkirim (<em>Auto-Submit</em>).
               </span>
             </li>
             <li className="flex items-start gap-2.5">
-              <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded bg-emerald-100 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300 text-xs font-bold mt-0.5">
+              <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded bg-[#113057]/10 text-[#113057] dark:bg-[#113057]/25 dark:text-[#60A5FA] text-xs font-bold mt-0.5">
                 3
               </span>
               <span className="leading-relaxed">
-                <strong>Kerahasiaan Kunci & Pembahasan:</strong> Selama kuis berlangsung, indikator benar/salah dan pembahasan langkah perhitungan tidak ditampilkan. Seluruh pembahasan baru dibuka secara transparan setelah kuis selesai dikirim.
+                <strong>Kerahasiaan Kunci & Pembahasan:</strong> Selama ujian berlangsung, kunci jawaban dan pembahasan disembunyikan. Semua pembahasan terbuka setelah kuis dikirim.
               </span>
             </li>
             <li className="flex items-start gap-2.5">
-              <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded bg-emerald-100 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300 text-xs font-bold mt-0.5">
+              <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded bg-[#113057]/10 text-[#113057] dark:bg-[#113057]/25 dark:text-[#60A5FA] text-xs font-bold mt-0.5">
                 4
               </span>
               <span className="leading-relaxed">
-                <strong>Ketentuan Kelulusan (KKM {QUIZ_PASSING_SCORE}) & Remedial:</strong> Peserta dinyatakan lulus apabila meraih skor minimal <strong>{QUIZ_PASSING_SCORE}/100</strong> (15 soal benar). Apabila nilai pada Kesempatan Utama di bawah {QUIZ_PASSING_SCORE}, peserta diberikan <strong>1 kali kesempatan Remedial</strong> dengan paket soal acak baru.
+                <strong>Ketentuan Lulus (KKM {QUIZ_PASSING_SCORE}) & Remedial:</strong> Kamu lulus jika skor minimal <strong>{QUIZ_PASSING_SCORE}/100</strong> (15 soal benar). Jika nilai pertama masih di bawah {QUIZ_PASSING_SCORE}, tersedia <strong>1x Remedial</strong> dengan paket soal acak baru.
               </span>
             </li>
           </ul>
@@ -1098,7 +1098,7 @@ export function QuizWorkbench() {
               </span>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {quizProgress.mainAttempt && (
-                  <div className="rounded-lg border bg-card p-3.5 flex items-center justify-between gap-3">
+                  <div className="rounded-lg border bg-card p-3.5 flex flex-wrap items-center justify-between gap-3">
                     <div className="flex items-center gap-3">
                       <div
                         className={cn(
@@ -1139,7 +1139,7 @@ export function QuizWorkbench() {
                 )}
 
                 {quizProgress.remedialAttempt && (
-                  <div className="rounded-lg border bg-card p-3.5 flex items-center justify-between gap-3">
+                  <div className="rounded-lg border bg-card p-3.5 flex flex-wrap items-center justify-between gap-3">
                     <div className="flex items-center gap-3">
                       <div
                         className={cn(
@@ -1215,7 +1215,7 @@ export function QuizWorkbench() {
                   type="button"
                   size="sm"
                   onClick={() => handleStartQuizConfirmed(confirmStartType)}
-                  className="gap-1.5 bg-emerald-600 text-white hover:bg-emerald-700"
+                  className="gap-1.5 bg-[#113057] text-white hover:bg-[#0A2342]"
                 >
                   <PlayCircle className="h-4 w-4" />
                   Ya, Mulai Timer 60 Menit Sekarang
@@ -1241,7 +1241,7 @@ export function QuizWorkbench() {
               )}
             </div>
 
-            <div className="flex flex-wrap items-center gap-2">
+            <div className="flex flex-wrap items-center gap-2 w-full sm:w-auto">
               {!hasCompletedPractice ? (
                 <Button
                   type="button"
@@ -1255,7 +1255,7 @@ export function QuizWorkbench() {
                 <Button
                   type="button"
                   onClick={() => setConfirmStartType("utama")}
-                  className="gap-2 bg-emerald-600 text-white hover:bg-emerald-700"
+                  className="gap-2 bg-[#FFB61E] text-[#0A2342] font-semibold hover:bg-[#F59E0B]"
                 >
                   <PlayCircle className="h-4 w-4" />
                   Mulai Mengerjakan Kuis (60 Menit)
@@ -1264,7 +1264,7 @@ export function QuizWorkbench() {
                 <Button
                   type="button"
                   onClick={() => setConfirmStartType("remedial")}
-                  className="gap-2 bg-emerald-600 text-white hover:bg-emerald-700"
+                  className="gap-2 bg-[#113057] text-white hover:bg-[#0A2342]"
                 >
                   <RotateCcw className="h-4 w-4" />
                   Ambil Kuis Remedial (Kesempatan Terakhir: 1x)
@@ -1278,7 +1278,7 @@ export function QuizWorkbench() {
                     )
                     setView("results")
                   }}
-                  className="gap-2 bg-emerald-600 text-white hover:bg-emerald-700"
+                  className="gap-2 bg-[#113057] text-white hover:bg-[#0A2342]"
                 >
                   <ClipboardCheck className="h-4 w-4" />
                   Lihat Hasil & Pembahasan Lengkap

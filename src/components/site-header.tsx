@@ -56,12 +56,12 @@ export function SiteHeader({
             </>
           )}
           <Link href="/" className="flex items-center gap-2.5 font-semibold text-foreground group">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-600 text-white shadow-xs transition-transform group-hover:scale-105">
+            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#113057] text-white shadow-xs transition-transform group-hover:scale-105">
               <Network className="h-4 w-4" />
             </div>
             <div className="flex flex-col leading-none">
               <span className="text-base font-bold tracking-tight text-foreground">
-                SubnetLab <span className="text-emerald-600 font-mono font-semibold">IPv4</span>
+                SubnetLab <span className="text-[#113057] font-mono font-semibold">IPv4</span>
               </span>
             </div>
           </Link>
@@ -80,7 +80,7 @@ export function SiteHeader({
                   className={cn(
                     "flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all",
                     isActive
-                      ? "bg-emerald-600 text-white font-semibold shadow-xs"
+                      ? "bg-[#113057] text-white font-semibold shadow-xs"
                       : "text-muted-foreground hover:text-foreground hover:bg-background/80"
                   )}
                 >
@@ -108,11 +108,11 @@ export function SiteHeader({
               <SheetContent side="right" className="w-72 p-0">
                 <SheetHeader className="border-b px-4 py-4">
                   <SheetTitle className="flex items-center gap-2 text-left">
-                    <div className="flex h-7 w-7 items-center justify-center rounded-md bg-emerald-600 text-white">
+                    <div className="flex h-7 w-7 items-center justify-center rounded-md bg-[#113057] text-white">
                       <Network className="h-4 w-4" />
                     </div>
                     <span className="text-sm font-bold">
-                      SubnetLab <span className="text-emerald-600 font-mono">IPv4</span>
+                      SubnetLab <span className="text-[#113057] font-mono">IPv4</span>
                     </span>
                   </SheetTitle>
                 </SheetHeader>
@@ -128,7 +128,7 @@ export function SiteHeader({
                         className={cn(
                           "flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors",
                           isActive
-                            ? "bg-emerald-600 text-white font-semibold"
+                            ? "bg-[#113057] text-white font-semibold"
                             : "text-muted-foreground hover:text-foreground hover:bg-muted"
                         )}
                       >

@@ -292,13 +292,13 @@ export function SimulatorWorkbench() {
   return (
     <div className="flex flex-col gap-6">
       {/* Page Header Banner */}
-      <div className="rounded-2xl border bg-gradient-to-r from-emerald-50/70 via-background to-background p-5 sm:p-6 dark:from-emerald-950/20 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+      <div className="rounded-2xl border border-[#113057] bg-[#113057] p-5 sm:p-6 text-white flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         <div className="flex flex-col gap-1.5">
-          <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-foreground">
-            Interactive IPv4 & Subnetting Simulator
+          <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
+            Kalkulator IPv4 & Visualizer Biner 32-Bit
           </h1>
-          <p className="text-xs sm:text-sm text-muted-foreground max-w-2xl">
-            Eksplorasi struktur 32-bit biner, identifikasi kelas IPv4 (Kelas A–E & Alamat Khusus), operasi logika bitwise AND/OR, serta pembagian blok subnet secara langsung.
+          <p className="text-xs sm:text-sm text-white/85 max-w-2xl">
+            Ubah IP atau prefix CIDR, lalu langsung lihat pembagian bit biner, langkah bitwise AND/OR, dan daftar blok subnetnya.
           </p>
         </div>
 
@@ -308,11 +308,11 @@ export function SimulatorWorkbench() {
             variant="outline"
             size="sm"
             onClick={handleCopySummary}
-            className="gap-1.5 border-emerald-200 text-emerald-700 hover:bg-emerald-50 dark:border-emerald-800 dark:text-emerald-300"
+            className="gap-1.5 border-[#FFB61E] bg-[#FFB61E] text-[#113057] font-semibold hover:bg-[#F59E0B] hover:text-[#113057]"
           >
             {copiedField === "summary" ? (
               <>
-                <Check className="h-3.5 w-3.5 text-emerald-600" />
+                <Check className="h-3.5 w-3.5 text-[#113057]" />
                 Hasil Disalin!
               </>
             ) : (
@@ -328,7 +328,7 @@ export function SimulatorWorkbench() {
             variant="outline"
             size="sm"
             onClick={handleReset}
-            className="gap-1.5"
+            className="gap-1.5 border-white/30 bg-white/10 text-white hover:bg-white/20 hover:text-white"
           >
             <RotateCcw className="h-3.5 w-3.5" />
             Reset
@@ -339,18 +339,18 @@ export function SimulatorWorkbench() {
       {/* Layout 2 Kolom Desktop (Input di Kiri, Ringkasan Hasil di Kanan) */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
         {/* KOLOM KIRI: Panel Input, Slider Prefix, Validasi & Preset */}
-        <div className="lg:col-span-5 flex flex-col gap-4">
+        <div className="lg:col-span-5 min-w-0 flex flex-col gap-4">
           <Card className="shadow-xs">
             <CardHeader className="pb-3 border-b">
-              <CardTitle className="text-sm font-semibold flex items-center justify-between">
+              <CardTitle className="text-sm font-semibold flex flex-wrap items-center justify-between gap-2">
                 <span className="flex items-center gap-2">
-                  <Calculator className="h-4 w-4 text-emerald-600" />
+                  <Calculator className="h-4 w-4 text-[#113057]" />
                   Parameter Input IPv4 & Subnet
                 </span>
                 <button
                   type="button"
                   onClick={() => saveToHistory()}
-                  className="text-[11px] font-medium text-emerald-700 hover:underline dark:text-emerald-400 inline-flex items-center gap-1"
+                  className="text-[11px] font-medium text-[#113057] hover:underline dark:text-[#60A5FA] inline-flex items-center gap-1"
                 >
                   <History className="h-3 w-3" />
                   Catat ke Riwayat
@@ -361,7 +361,7 @@ export function SimulatorWorkbench() {
             <CardContent className="pt-4 flex flex-col gap-4">
               {/* 1. Input Alamat IPv4 */}
               <div className="flex flex-col gap-1.5">
-                <div className="flex items-center justify-between">
+                <div className="flex flex-wrap items-center justify-between gap-1">
                   <label htmlFor="sim-ip-input" className="text-xs font-semibold text-foreground">
                     Alamat IPv4 (Desimal Bertitik)
                   </label>
@@ -405,7 +405,7 @@ export function SimulatorWorkbench() {
                     </div>
                   </div>
                 ) : (
-                  <div className="rounded-lg border border-[#86EFAC] bg-[#DCFCE7] px-2.5 py-1.5 text-[#166534] text-xs flex items-center justify-between">
+                  <div className="rounded-lg border border-[#86EFAC] bg-[#DCFCE7] px-2.5 py-1.5 text-[#166534] text-xs flex flex-wrap items-center justify-between gap-1.5">
                     <span className="flex items-center gap-1.5 font-medium">
                       <CheckCircle2 className="h-3.5 w-3.5 shrink-0" />
                       Format IPv4 Valid
@@ -421,9 +421,9 @@ export function SimulatorWorkbench() {
               <div className="flex flex-col gap-2 pt-1 border-t">
                 <div className="flex items-center justify-between">
                   <label htmlFor="sim-prefix-slider" className="text-xs font-semibold text-foreground">
-                    CIDR Prefix Length (/0 – /32)
+                    CIDR Prefix Length (/0 - /32)
                   </label>
-                  <Badge className="font-mono text-xs bg-emerald-600 text-white hover:bg-emerald-700">
+                  <Badge className="font-mono text-xs bg-[#113057] text-white hover:bg-[#0A2342]">
                     /{prefixInput}
                   </Badge>
                 </div>
@@ -437,7 +437,7 @@ export function SimulatorWorkbench() {
                     max={32}
                     value={prefixInput}
                     onChange={(e) => handlePrefixChange(Number(e.target.value))}
-                    className="w-full accent-emerald-600 cursor-pointer h-2 rounded-lg bg-muted"
+                    className="w-full accent-[#113057] cursor-pointer h-2 rounded-lg bg-muted"
                   />
                   <span className="text-[11px] font-mono text-muted-foreground">/32</span>
                 </div>
@@ -452,7 +452,7 @@ export function SimulatorWorkbench() {
                       className={cn(
                         "px-2 py-1 rounded text-[11px] font-mono font-semibold border transition-colors",
                         prefixInput === pref
-                          ? "border-emerald-600 bg-emerald-600 text-white"
+                          ? "border-[#113057] bg-[#113057] text-white"
                           : "border-border bg-muted/40 text-muted-foreground hover:text-foreground hover:bg-muted"
                       )}
                     >
@@ -464,7 +464,7 @@ export function SimulatorWorkbench() {
 
               {/* 3. Input Subnet Mask (Sinkron Dua Arah + Validasi Kontigu) */}
               <div className="flex flex-col gap-1.5 pt-1 border-t">
-                <div className="flex items-center justify-between">
+                <div className="flex flex-wrap items-center justify-between gap-1">
                   <label htmlFor="sim-mask-input" className="text-xs font-semibold text-foreground">
                     Subnet Mask (Sinkron dengan Prefix)
                   </label>
@@ -501,8 +501,8 @@ export function SimulatorWorkbench() {
               <div className="flex flex-col gap-2 pt-2 border-t">
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-semibold text-foreground flex items-center gap-1.5">
-                    <Bookmark className="h-3.5 w-3.5 text-emerald-600" />
-                    Skenario Uji Cepat (Kelas A–E & Kasus Khusus)
+                    <Bookmark className="h-3.5 w-3.5 text-[#113057]" />
+                    Skenario Uji Cepat (Kelas A-E & Kasus Khusus)
                   </span>
                 </div>
 
@@ -518,7 +518,7 @@ export function SimulatorWorkbench() {
                         className={cn(
                           "text-left rounded-lg border p-2 transition-all flex flex-col gap-0.5",
                           isActive
-                            ? "border-emerald-600 bg-emerald-50/70 dark:bg-emerald-950/40 ring-1 ring-emerald-500/30"
+                            ? "border-[#113057] bg-[#113057]/8 dark:bg-[#113057]/20 ring-1 ring-[#113057]/30"
                             : "border-border bg-card hover:bg-muted/50"
                         )}
                       >
@@ -571,13 +571,13 @@ export function SimulatorWorkbench() {
         </div>
 
         {/* KOLOM KANAN: Identifikasi Kelas, Kartu Metrik, Kartu Blok Alamat & Tabel Output Lengkap */}
-        <div className="lg:col-span-7 flex flex-col gap-4">
+        <div className="lg:col-span-7 min-w-0 flex flex-col gap-4">
           {/* Banner Identifikasi Kelas & Status Khusus */}
           <Card className="shadow-xs">
             <CardContent className="p-4 flex flex-col gap-3">
               <div className="flex flex-wrap items-center justify-between gap-2">
                 <div className="flex items-center gap-2.5">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-600 text-white font-mono font-extrabold text-lg shadow-xs">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#113057] text-white font-mono font-extrabold text-lg shadow-xs">
                     {calcResult.classification.ipClass === "Loopback"
                       ? "LB"
                       : calcResult.classification.ipClass === "Unspecified"
@@ -591,7 +591,7 @@ export function SimulatorWorkbench() {
                       </h2>
                       <Badge
                         variant="outline"
-                        className="text-xs border-emerald-200 bg-emerald-50 text-emerald-700 dark:bg-emerald-950/40 dark:border-emerald-800 dark:text-emerald-300"
+                        className="text-xs border-[#FFB61E] bg-[#FFB61E]/20 text-[#92400E] dark:bg-[#FFB61E]/15 dark:border-[#FFB61E]/50 dark:text-[#FFB61E]"
                       >
                         {calcResult.classification.specialLabel}
                       </Badge>
@@ -677,7 +677,7 @@ export function SimulatorWorkbench() {
               <span className="text-[11px] font-semibold text-muted-foreground uppercase tracking-wide">
                 JUMLAH SUBNET (2^N)
               </span>
-              <p className="text-xl sm:text-2xl font-bold font-mono text-blue-600 dark:text-blue-400 mt-1">
+              <p className="text-xl sm:text-2xl font-bold font-mono text-[#113057] dark:text-[#93C5FD] mt-1">
                 {calcResult.classification.isUnicastCalculable
                   ? `${calcResult.subnetCount.toLocaleString("id-ID")} Subnet`
                   : "N/A"}
@@ -693,7 +693,7 @@ export function SimulatorWorkbench() {
               <span className="text-[11px] font-semibold text-muted-foreground uppercase tracking-wide">
                 HOST VALID / SUBNET
               </span>
-              <p className="text-xl sm:text-2xl font-bold font-mono text-emerald-600 dark:text-emerald-400 mt-1">
+              <p className="text-xl sm:text-2xl font-bold font-mono text-[#15803D] dark:text-green-400 mt-1">
                 {calcResult.classification.isUnicastCalculable
                   ? `${calcResult.usableHosts.toLocaleString("id-ID")} Host`
                   : "N/A"}
@@ -727,7 +727,7 @@ export function SimulatorWorkbench() {
               <div className="flex items-center justify-between">
                 <div>
                   <h3 className="text-sm font-bold text-foreground flex items-center gap-2">
-                    <FileText className="h-4 w-4 text-emerald-600" />
+                    <FileText className="h-4 w-4 text-[#113057]" />
                     Blok Alamat Tempat IP Berada
                   </h3>
                   <p className="text-xs text-muted-foreground">
@@ -741,10 +741,10 @@ export function SimulatorWorkbench() {
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5">
                 {/* Network ID (Blue Primer Border) */}
-                <div className="rounded-xl border border-l-4 border-l-blue-600 bg-blue-50/30 dark:bg-blue-950/20 p-3.5 shadow-xs flex flex-col justify-between">
+                <div className="rounded-xl border border-l-4 border-l-[#113057] bg-[#113057]/[0.04] dark:bg-[#113057]/15 p-3.5 shadow-xs flex flex-col justify-between">
                   <div>
                     <div className="flex items-center justify-between">
-                      <span className="text-[11px] font-bold text-blue-600 dark:text-blue-400 uppercase tracking-wide">
+                      <span className="text-[11px] font-bold text-[#113057] dark:text-[#60A5FA] uppercase tracking-wide">
                         NETWORK ID
                       </span>
                       <button
@@ -754,7 +754,7 @@ export function SimulatorWorkbench() {
                         title="Salin Network ID"
                       >
                         {copiedField === "net" ? (
-                          <Check className="h-3.5 w-3.5 text-emerald-600" />
+                          <Check className="h-3.5 w-3.5 text-[#113057]" />
                         ) : (
                           <Copy className="h-3.5 w-3.5" />
                         )}
@@ -769,11 +769,11 @@ export function SimulatorWorkbench() {
                   </p>
                 </div>
 
-                {/* Rentang Host Valid (Emerald Green Primer Border) */}
-                <div className="rounded-xl border border-l-4 border-l-emerald-600 bg-emerald-50/30 dark:bg-emerald-950/20 p-3.5 shadow-xs flex flex-col justify-between">
+                {/* Rentang Host Valid (Hijau Primer) */}
+                <div className="rounded-xl border border-l-4 border-l-[#16A34A] bg-green-50/40 dark:bg-green-950/20 p-3.5 shadow-xs flex flex-col justify-between">
                   <div>
                     <div className="flex items-center justify-between">
-                      <span className="text-[11px] font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wide">
+                      <span className="text-[11px] font-bold text-[#15803D] dark:text-green-400 uppercase tracking-wide">
                         RENTANG HOST VALID
                       </span>
                       <button
@@ -783,7 +783,7 @@ export function SimulatorWorkbench() {
                         title="Salin Rentang Host"
                       >
                         {copiedField === "range" ? (
-                          <Check className="h-3.5 w-3.5 text-emerald-600" />
+                          <Check className="h-3.5 w-3.5 text-[#16A34A]" />
                         ) : (
                           <Copy className="h-3.5 w-3.5" />
                         )}
@@ -794,15 +794,15 @@ export function SimulatorWorkbench() {
                     </p>
                   </div>
                   <p className="text-[11px] text-muted-foreground mt-2">
-                    Alamat yang dapat dipasang pada perangkat
+                    Alamat yang bisa dipasang ke perangkat
                   </p>
                 </div>
 
-                {/* Broadcast ID (Amber/Orange Primer Border) */}
-                <div className="rounded-xl border border-l-4 border-l-amber-600 bg-amber-50/30 dark:bg-amber-950/20 p-3.5 shadow-xs flex flex-col justify-between">
+                {/* Broadcast ID (Amber / Kuning Border) */}
+                <div className="rounded-xl border border-l-4 border-l-amber-600 bg-amber-50/40 dark:bg-amber-950/20 p-3.5 shadow-xs flex flex-col justify-between">
                   <div>
                     <div className="flex items-center justify-between">
-                      <span className="text-[11px] font-bold text-amber-600 dark:text-amber-400 uppercase tracking-wide">
+                      <span className="text-[11px] font-bold text-amber-700 dark:text-amber-400 uppercase tracking-wide">
                         BROADCAST ID
                       </span>
                       <button
@@ -812,7 +812,7 @@ export function SimulatorWorkbench() {
                         title="Salin Broadcast ID"
                       >
                         {copiedField === "bcast" ? (
-                          <Check className="h-3.5 w-3.5 text-emerald-600" />
+                          <Check className="h-3.5 w-3.5 text-amber-700" />
                         ) : (
                           <Copy className="h-3.5 w-3.5" />
                         )}
@@ -855,31 +855,31 @@ export function SimulatorWorkbench() {
                 </div>
                 <div className="flex justify-between py-1.5 border-b">
                   <span className="text-muted-foreground">CIDR Notation</span>
-                  <span className="font-mono font-semibold text-emerald-700 dark:text-emerald-400">
+                  <span className="font-mono font-semibold text-[#113057] dark:text-[#60A5FA]">
                     /{calcResult.prefix}
                   </span>
                 </div>
                 <div className="flex justify-between py-1.5 border-b">
                   <span className="text-muted-foreground">Network Address</span>
-                  <span className="font-mono font-bold text-blue-600 dark:text-blue-400">
+                  <span className="font-mono font-bold text-[#113057] dark:text-[#60A5FA]">
                     {calcResult.classification.isUnicastCalculable ? calcResult.networkAddress : "-"}
                   </span>
                 </div>
                 <div className="flex justify-between py-1.5 border-b">
                   <span className="text-muted-foreground">Broadcast Address</span>
-                  <span className="font-mono font-bold text-amber-600 dark:text-amber-400">
+                  <span className="font-mono font-bold text-amber-700 dark:text-amber-400">
                     {calcResult.classification.isUnicastCalculable ? calcResult.broadcastAddress : "-"}
                   </span>
                 </div>
                 <div className="flex justify-between py-1.5 border-b">
                   <span className="text-muted-foreground">First Usable Host</span>
-                  <span className="font-mono font-semibold text-emerald-700 dark:text-emerald-400">
+                  <span className="font-mono font-semibold text-[#15803D] dark:text-green-400">
                     {calcResult.firstUsableHost ?? "-"}
                   </span>
                 </div>
                 <div className="flex justify-between py-1.5 border-b">
                   <span className="text-muted-foreground">Last Usable Host</span>
-                  <span className="font-mono font-semibold text-emerald-700 dark:text-emerald-400">
+                  <span className="font-mono font-semibold text-[#15803D] dark:text-green-400">
                     {calcResult.lastUsableHost ?? "-"}
                   </span>
                 </div>
@@ -891,7 +891,7 @@ export function SimulatorWorkbench() {
                 </div>
                 <div className="flex justify-between py-1.5 border-b">
                   <span className="text-muted-foreground">Usable Host</span>
-                  <span className="font-mono font-semibold text-emerald-700 dark:text-emerald-400">
+                  <span className="font-mono font-semibold text-[#15803D] dark:text-green-400">
                     {calcResult.usableHosts.toLocaleString("id-ID")}
                   </span>
                 </div>
@@ -923,10 +923,10 @@ export function SimulatorWorkbench() {
       <div className="rounded-2xl border bg-card p-5 shadow-xs flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
           <h3 className="text-sm font-bold text-foreground">
-            Ingin menguji pemahaman dari hasil simulasi ini?
+            Mau uji pemahaman dari hasil hitung di atas?
           </h3>
           <p className="text-xs text-muted-foreground">
-            Pelajari teori lengkap subnetting Kelas C pada modul Materi atau kerjakan soal interaktif di halaman Latihan.
+            Cek teori subnetting Kelas C di Materi atau langsung kerjakan soal interaktif di Latihan.
           </p>
         </div>
         <div className="flex flex-wrap items-center gap-2.5 shrink-0">
@@ -938,13 +938,13 @@ export function SimulatorWorkbench() {
             )}
           >
             <BookOpen className="h-3.5 w-3.5" />
-            Pelajari Materi Kelas C
+            Buka Materi
           </Link>
           <Link
             href="/latihan"
             className={cn(
               buttonVariants({ size: "sm" }),
-              "gap-1.5 bg-emerald-600 text-white hover:bg-emerald-700"
+              "gap-1.5 bg-[#113057] text-white hover:bg-[#0A2342]"
             )}
           >
             <GraduationCap className="h-3.5 w-3.5" />

@@ -17,42 +17,42 @@ export function SectionCards({ className }: { className?: string }) {
     {
       title: "Materi Terstruktur",
       value: "12 Topik",
-      badge: "Kelas C",
+      badge: "Fokus Kelas C",
       badgeVariant: "default" as const,
-      description: "Pengenalan, biner, CIDR, hingga subnetting",
+      description: "Belajar dari nol pakai 1 IP yang sama di tiap bab",
       icon: BookOpen,
       href: "/materi",
-      color: "text-blue-600 bg-blue-50 border-blue-200 dark:bg-blue-950/40 dark:text-blue-400 dark:border-blue-900",
+      color: "text-[#113057] bg-[#113057]/10 border-[#113057]/20 dark:bg-blue-950/40 dark:text-blue-400 dark:border-blue-900",
     },
     {
-      title: "Simulator IPv4",
+      title: "Simulator Biner",
       value: "Kelas A–E",
       badge: "Engine 32-bit",
       badgeVariant: "outline" as const,
-      description: "Bitwise AND, visual biner, & deteksi multicast",
+      description: "Lihat cara kerja bitwise AND & letak bit pinjam",
       icon: Calculator,
       href: "/simulator",
-      color: "text-emerald-600 bg-emerald-50 border-emerald-200 dark:bg-emerald-950/40 dark:text-emerald-400 dark:border-emerald-900",
+      color: "text-[#0A2342] bg-[#0A2342]/10 border-[#0A2342]/20 dark:bg-slate-800 dark:text-sky-300 dark:border-slate-700",
     },
     {
-      title: "Bank Latihan",
-      value: "9 Kategori",
-      badge: "3 Level",
+      title: "Latihan Mandiri",
+      value: "10 Soal/Sesi",
+      badge: "KKM 70",
       badgeVariant: "secondary" as const,
-      description: "Mudah, menengah, sulit dengan pembahasan",
+      description: "Asah hitunganmu sampai lancar sebelum masuk kuis",
       icon: PencilLine,
       href: "/latihan",
-      color: "text-amber-600 bg-amber-50 border-amber-200 dark:bg-amber-950/40 dark:text-amber-400 dark:border-amber-900",
+      color: "text-[#0A9D68] bg-[#0DB87A]/10 border-[#0DB87A]/25 dark:bg-emerald-950/40 dark:text-emerald-400 dark:border-emerald-900",
     },
     {
-      title: "Evaluasi & Kuis",
-      value: "Skor Otomatis",
-      badge: "Penilaian Mandiri",
+      title: "Kuis Evaluasi",
+      value: "20 Soal",
+      badge: "Timer 60 Menit",
       badgeVariant: "outline" as const,
-      description: "Ukur pemahaman subnetting dengan skor & pembahasan",
+      description: "Cek hasil kerjamu lengkap dengan kunci & pembahasan",
       icon: Award,
       href: "/kuis",
-      color: "text-indigo-600 bg-indigo-50 border-indigo-200 dark:bg-indigo-950/40 dark:text-indigo-400 dark:border-indigo-900",
+      color: "text-[#113057] bg-sky-50 border-sky-200 dark:bg-indigo-950/40 dark:text-indigo-400 dark:border-indigo-900",
     },
   ]
 
@@ -62,7 +62,7 @@ export function SectionCards({ className }: { className?: string }) {
         const Icon = card.icon
         return (
           <Link key={card.title} href={card.href} className="group block">
-            <Card className="h-full transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md hover:border-primary/40 bg-card">
+            <Card className="h-full rounded-2xl border border-[#E0E0E0] border-t-4 border-t-[#113057] bg-white shadow-[0_2px_10px_rgba(10,35,66,0.05)] transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_16px_40px_rgba(10,35,66,0.1)] dark:bg-card dark:border-border dark:border-t-[#3B6FE0]">
               <CardHeader className="flex flex-row items-center justify-between pb-2">
                 <CardDescription className="font-medium text-muted-foreground">{card.title}</CardDescription>
                 <div className={`p-2 rounded-lg border ${card.color}`}>

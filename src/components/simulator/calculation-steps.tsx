@@ -34,7 +34,7 @@ export function CalculationSteps({ result }: CalculationStepsProps) {
           <CardHeader className="pb-3 border-b flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
             <div>
               <CardTitle className="text-sm font-semibold flex items-center gap-2">
-                <Table2 className="h-4 w-4 text-emerald-600" />
+                <Table2 className="h-4 w-4 text-[#113057]" />
                 Daftar Blok Subnet (Menampilkan {displayedBlocks.length} dari{" "}
                 {result.totalSubnetBlocksInScope.toLocaleString("id-ID")} Blok Subnet)
               </CardTitle>
@@ -49,7 +49,7 @@ export function CalculationSteps({ result }: CalculationStepsProps) {
               <button
                 type="button"
                 onClick={() => setShowAllBlocks((prev) => !prev)}
-                className="text-xs font-medium px-3 py-1.5 rounded-lg border border-emerald-200 bg-emerald-50 text-emerald-700 hover:bg-emerald-100 transition-colors dark:border-emerald-800 dark:bg-emerald-950/40 dark:text-emerald-300 self-start sm:self-auto"
+                className="text-xs font-medium px-3 py-1.5 rounded-lg border border-[#113057]/30 bg-[#113057]/10 text-[#113057] hover:bg-[#113057]/15 transition-colors dark:border-[#113057]/40 dark:bg-[#113057]/20 dark:text-[#60A5FA] self-start sm:self-auto"
               >
                 {showAllBlocks
                   ? "Tampilkan 8 Blok Sekitar IP Aktif"
@@ -78,14 +78,14 @@ export function CalculationSteps({ result }: CalculationStepsProps) {
                       className={cn(
                         "transition-colors",
                         block.isCurrentSubnet
-                          ? "bg-emerald-50/70 dark:bg-emerald-950/40 border-l-4 border-l-emerald-600"
+                          ? "bg-[#113057]/8 dark:bg-[#113057]/20 border-l-4 border-l-[#113057]"
                           : "hover:bg-muted/40"
                       )}
                     >
                       <td
                         className={cn(
                           "py-2.5 font-bold font-sans",
-                          block.isCurrentSubnet && "text-emerald-700 dark:text-emerald-300 pl-2"
+                          block.isCurrentSubnet && "text-[#113057] dark:text-[#60A5FA] pl-2"
                         )}
                       >
                         Subnet {block.index}
@@ -93,7 +93,7 @@ export function CalculationSteps({ result }: CalculationStepsProps) {
                       <td
                         className={cn(
                           "py-2.5",
-                          block.isCurrentSubnet && "font-bold text-blue-700 dark:text-blue-300"
+                          block.isCurrentSubnet && "font-bold text-[#113057] dark:text-[#93C5FD]"
                         )}
                       >
                         {block.networkAddress}
@@ -110,7 +110,7 @@ export function CalculationSteps({ result }: CalculationStepsProps) {
                       </td>
                       <td className="py-2.5 font-sans">
                         {block.isCurrentSubnet ? (
-                          <Badge className="bg-emerald-600 text-white text-[10px] hover:bg-emerald-700 gap-1">
+                          <Badge className="bg-[#113057] text-white text-[10px] hover:bg-[#0A2342] gap-1">
                             <CheckCircle2 className="h-3 w-3" />
                             IP Berada Disini
                           </Badge>
@@ -131,7 +131,7 @@ export function CalculationSteps({ result }: CalculationStepsProps) {
       <Card className="shadow-xs">
         <CardHeader className="pb-3 border-b">
           <CardTitle className="text-sm font-semibold flex items-center gap-2">
-            <ListOrdered className="h-4 w-4 text-emerald-600" />
+            <ListOrdered className="h-4 w-4 text-[#113057]" />
             Penjelasan Langkah Perhitungan (Step-by-Step)
           </CardTitle>
           <p className="text-xs text-muted-foreground mt-0.5">
@@ -148,7 +148,7 @@ export function CalculationSteps({ result }: CalculationStepsProps) {
               >
                 <div className="flex flex-wrap items-center justify-between gap-2">
                   <div className="flex items-center gap-2.5">
-                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald-600 text-white text-xs font-bold">
+                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#113057] text-white text-xs font-bold">
                       {step.stepNumber}
                     </span>
                     <h4 className="text-sm font-bold text-foreground">{step.title}</h4>
@@ -157,9 +157,9 @@ export function CalculationSteps({ result }: CalculationStepsProps) {
                   {step.formula && (
                     <Badge
                       variant="outline"
-                      className="font-mono text-[11px] border-emerald-200 bg-emerald-50/80 text-emerald-800 dark:border-emerald-800 dark:bg-emerald-950/40 dark:text-emerald-300"
+                      className="font-mono text-[11px] border-[#FFB61E] bg-[#FFB61E]/20 text-[#92400E] dark:border-[#FFB61E]/50 dark:bg-[#FFB61E]/15 dark:text-[#FFB61E]"
                     >
-                      <BookOpenCheck className="h-3 w-3 mr-1 text-emerald-600" />
+                      <BookOpenCheck className="h-3 w-3 mr-1 text-[#B45309] dark:text-[#FFB61E]" />
                       {step.formula}
                     </Badge>
                   )}

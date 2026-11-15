@@ -31,10 +31,10 @@ export default function KuisPage() {
       <footer className="mt-auto border-t bg-card/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center text-xs text-muted-foreground flex flex-col sm:flex-row items-center justify-between gap-3">
           <div className="flex items-center gap-2">
-            <Network className="h-4 w-4 text-emerald-600" />
+            <Network className="h-4 w-4 text-[#113057]" />
             <span className="font-semibold text-foreground">SubnetLab IPv4</span>
           </div>
-          <p>Interactive IPv4 Learning & Simulation Platform</p>
+          <p>Platform Belajar & Simulasi Subnetting IPv4 - Paham Logika, Bukan Hafalan Rumus.</p>
         </div>
       </footer>
     </div>

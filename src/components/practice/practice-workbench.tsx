@@ -299,23 +299,23 @@ export function PracticeWorkbench() {
   return (
     <div className="flex flex-col gap-6">
       {/* Header & Ringkasan Status Latihan Utama */}
-      <section className="rounded-2xl border bg-gradient-to-r from-emerald-50/70 via-background to-background p-5 sm:p-7 dark:from-emerald-950/20 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+      <section className="rounded-2xl border border-[#113057] bg-[#113057] p-5 sm:p-7 text-white flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
         <div className="flex flex-col gap-2 max-w-2xl">
-          <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-foreground">
-            Latihan Mandiri IPv4 & Subnetting Kelas C
+          <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
+            Latihan IPv4 & Subnetting Kelas C
           </h1>
-          <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-            Kerjakan <strong>10 butir soal</strong> latihan (Pilihan Ganda & Isian Singkat) dengan batas ketuntasan minimal <strong>KKM 70</strong> dalam maksimal <strong>3 kali percobaan</strong>. Apabila skor percobaan pertama di bawah 70, Anda dapat lanjut ke percobaan ke-2 hingga ke-3; apabila sudah mencapai <strong>70 ke atas</strong>, Anda langsung dinyatakan tuntas dan dapat lanjut ke <strong>Kuis Evaluasi</strong>.
+          <p className="text-xs sm:text-sm text-white/85 leading-relaxed">
+            Kerjakan <strong className="text-white">10 soal</strong> (Pilihan Ganda & Isian Singkat) dengan batas lulus <strong className="text-white">KKM 70</strong> dalam maksimal <strong className="text-white">3 percobaan</strong>. Jika skor masih di bawah 70, kamu bisa coba lagi sampai percobaan ke-3. Begitu tembus <strong className="text-[#FFB61E]">70 ke atas</strong>, Kuis Evaluasi langsung terbuka.
           </p>
         </div>
 
         {/* Kartu Status & Highlight Skor Latihan Utama */}
         <div
           className={cn(
-            "rounded-xl border p-4 shadow-xs min-w-[290px] sm:min-w-[340px] flex items-center justify-between gap-4",
+            "rounded-xl border p-4 w-full lg:w-auto lg:min-w-[340px] flex items-center justify-between gap-4 text-foreground",
             mainRecord?.passed
-              ? "border-[#86EFAC] bg-[#DCFCE7]/35 dark:bg-emerald-950/25"
-              : "bg-card"
+              ? "border-[#86EFAC] bg-[#DCFCE7] dark:bg-emerald-950/90"
+              : "bg-white border-white/15 dark:bg-card dark:border-border"
           )}
         >
           <div className="flex flex-col gap-1.5 flex-1">
@@ -326,11 +326,11 @@ export function PracticeWorkbench() {
             <div className="flex items-center gap-1.5">
               {mainRecord?.passed ? (
                 <span className="inline-flex items-center gap-1 text-xs font-extrabold text-[#166534] dark:text-emerald-300">
-                  <CheckCircle2 className="h-4 w-4 shrink-0 text-emerald-600" />
+                  <CheckCircle2 className="h-4 w-4 shrink-0 text-[#166534] dark:text-emerald-400" />
                   TUNTAS / LULUS
                 </span>
               ) : mainRecord?.attemptsUsed ? (
-                <span className="text-xs font-bold text-amber-800 dark:text-amber-300">
+                <span className="text-xs font-bold text-[#92400E] dark:text-[#FFB61E]">
                   {mainRecord.attemptsUsed} dari {PRACTICE_MAX_ATTEMPTS} Percobaan Terpakai
                 </span>
               ) : (
@@ -342,7 +342,7 @@ export function PracticeWorkbench() {
 
             <div className="h-1.5 w-full rounded-sm bg-muted overflow-hidden mt-0.5">
               <div
-                className="h-full bg-emerald-600 transition-all duration-300"
+                className="h-full bg-[linear-gradient(90deg,#113057_0%,#FFB61E_100%)] transition-all duration-300"
                 style={{ width: `${Math.min(mainRecord?.bestScore ?? 0, 100)}%` }}
               />
             </div>
@@ -353,9 +353,9 @@ export function PracticeWorkbench() {
             className={cn(
               "rounded-lg border px-3.5 py-2 flex flex-col items-center justify-center shrink-0 min-w-[88px]",
               mainRecord?.passed
-                ? "border-[#166534]/30 bg-[#DCFCE7] text-[#166534] dark:bg-emerald-900/50 dark:text-emerald-200 dark:border-emerald-700"
+                ? "border-[#166534]/30 bg-white/80 text-[#166534] dark:bg-emerald-900/50 dark:text-emerald-200 dark:border-emerald-700"
                 : mainRecord?.attemptsUsed
-                  ? "border-amber-300 bg-amber-50 text-amber-900 dark:bg-amber-950/50 dark:text-amber-200"
+                  ? "border-[#FFB61E] bg-[#FFB61E]/20 text-[#92400E] dark:bg-[#FFB61E]/20 dark:text-[#FFB61E]"
                   : "border-border bg-muted/40 text-muted-foreground"
             )}
           >
@@ -392,7 +392,7 @@ export function PracticeWorkbench() {
               <span className="text-border">|</span>
               <span>
                 Batas Lulus:{" "}
-                <strong className="text-emerald-700 dark:text-emerald-400">
+                <strong className="text-[#113057] dark:text-[#60A5FA]">
                   KKM {PRACTICE_PASSING_SCORE}/100
                 </strong>
               </span>
@@ -406,14 +406,14 @@ export function PracticeWorkbench() {
             </div>
           </div>
 
-          <div className="flex flex-wrap items-center gap-2 shrink-0">
+          <div className="flex flex-wrap items-center gap-2 w-full sm:w-auto sm:shrink-0">
             <button
               type="button"
               onClick={() => setShowOptionalCategories((prev) => !prev)}
               className={cn(
                 "px-3 py-1.5 rounded-lg border text-xs font-medium transition-all inline-flex items-center gap-1.5 cursor-pointer",
                 showOptionalCategories || selectedCategory !== "semua"
-                  ? "border-emerald-600/40 bg-emerald-50/70 text-emerald-800 dark:bg-emerald-950/40 dark:text-emerald-300"
+                  ? "border-[#113057]/40 bg-[#113057]/10 text-[#113057] dark:bg-[#113057]/20 dark:text-[#60A5FA]"
                   : "border-border bg-muted/30 text-muted-foreground hover:text-foreground hover:bg-muted/60"
               )}
             >
@@ -445,7 +445,7 @@ export function PracticeWorkbench() {
           <div className="pt-3 border-t flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
             <div className="flex flex-wrap items-center gap-2">
               <span className="text-xs font-bold text-muted-foreground inline-flex items-center gap-1.5 mr-1">
-                <History className="h-3.5 w-3.5 text-emerald-600" />
+                <History className="h-3.5 w-3.5 text-[#113057]" />
                 Pilih Percobaan:
               </span>
 
@@ -460,7 +460,7 @@ export function PracticeWorkbench() {
                     className={cn(
                       "px-3 py-1.5 rounded-md border text-xs font-mono font-medium transition-all inline-flex items-center gap-2 cursor-pointer",
                       isSelected
-                        ? "border-blue-400 bg-blue-50/70 text-blue-950 font-bold shadow-2xs ring-1 ring-blue-300 dark:border-blue-700 dark:bg-blue-950/50 dark:text-blue-100"
+                        ? "border-[#113057] bg-[#113057]/10 text-[#0A2342] font-bold shadow-2xs ring-1 ring-[#113057]/30 dark:border-[#60A5FA] dark:bg-[#113057]/20 dark:text-white"
                         : "border-border bg-background text-muted-foreground hover:bg-muted/60 hover:text-foreground"
                     )}
                   >
@@ -494,7 +494,7 @@ export function PracticeWorkbench() {
                     className={cn(
                       "px-3 py-1.5 rounded-md border text-xs font-mono font-medium transition-all inline-flex items-center gap-2 cursor-pointer",
                       selectedAttemptTab === activeWorkingAttempt
-                        ? "border-blue-400 bg-blue-50/70 text-blue-950 font-bold shadow-2xs ring-1 ring-blue-300 dark:border-blue-700 dark:bg-blue-950/50 dark:text-blue-100"
+                        ? "border-[#113057] bg-[#113057]/10 text-[#0A2342] font-bold shadow-2xs ring-1 ring-[#113057]/30 dark:border-[#93C5FD] dark:bg-[#113057]/30 dark:text-white"
                         : "border-border bg-background text-muted-foreground hover:bg-muted/60 hover:text-foreground"
                     )}
                   >
@@ -503,7 +503,7 @@ export function PracticeWorkbench() {
                       className={cn(
                         "px-1.5 py-0.5 rounded text-[10px] font-bold uppercase border",
                         selectedAttemptTab === activeWorkingAttempt
-                          ? "border-blue-300 bg-blue-100 text-blue-800 dark:border-blue-700 dark:bg-blue-900/60 dark:text-blue-200"
+                          ? "border-[#113057]/30 bg-[#113057]/15 text-[#113057] dark:border-[#93C5FD]/40 dark:bg-[#113057]/50 dark:text-blue-100"
                           : "border-border bg-muted text-muted-foreground"
                       )}
                     >
@@ -521,7 +521,7 @@ export function PracticeWorkbench() {
                     type="button"
                     size="sm"
                     onClick={handleStartNextAttempt}
-                    className="h-8 text-xs gap-1.5 bg-blue-600 text-white hover:bg-blue-700 shadow-xs"
+                    className="h-8 text-xs gap-1.5 bg-[#113057] text-white hover:bg-[#0A2342] shadow-xs"
                   >
                     <PlayCircle className="h-3.5 w-3.5" />
                     Lanjut Latihan ke Percobaan {nextAvailableAttemptNumber}
@@ -533,7 +533,7 @@ export function PracticeWorkbench() {
                   href="/kuis"
                   className={cn(
                     buttonVariants({ size: "sm" }),
-                    "h-8 text-xs gap-1.5 bg-emerald-600 text-white hover:bg-emerald-700 shadow-xs focus-visible:ring-emerald-500"
+                    "h-8 text-xs gap-1.5 bg-[#FFB61E] text-[#0A2342] font-semibold hover:bg-[#F59E0B] shadow-xs"
                   )}
                 >
                   <Award className="h-3.5 w-3.5" />
@@ -550,13 +550,13 @@ export function PracticeWorkbench() {
           <div className="pt-3 border-t flex flex-col gap-2.5">
             <div className="flex items-center justify-between gap-2">
               <span className="text-[11px] text-muted-foreground">
-                <strong>Opsional:</strong> Gunakan pilihan di bawah ini hanya jika Anda ingin berlatih fokus pada satu sub-topik tertentu saja.
+                <strong>Opsional:</strong> Pilih topik di bawah kalau kamu mau latihan fokus di satu materi saja.
               </span>
               {selectedCategory !== "semua" && (
                 <button
                   type="button"
                   onClick={() => handleCategoryChange("semua")}
-                  className="text-[11px] text-emerald-700 dark:text-emerald-400 font-semibold underline cursor-pointer shrink-0"
+                  className="text-[11px] text-[#113057] dark:text-[#60A5FA] font-semibold underline cursor-pointer shrink-0"
                 >
                   Kembali ke Latihan Utama (Semua Materi)
                 </button>
@@ -570,7 +570,7 @@ export function PracticeWorkbench() {
                 className={cn(
                   "px-3 py-1.5 rounded-lg border text-xs font-semibold transition-all inline-flex items-center gap-1.5 cursor-pointer",
                   selectedCategory === "semua"
-                    ? "border-emerald-600 bg-emerald-600 text-white shadow-xs"
+                    ? "border-[#113057] bg-[#113057] text-white shadow-xs"
                     : "border-border bg-background text-muted-foreground hover:text-foreground hover:bg-muted/50"
                 )}
               >
@@ -591,7 +591,7 @@ export function PracticeWorkbench() {
                     className={cn(
                       "px-2.5 py-1.5 rounded-lg border text-xs font-medium transition-all inline-flex items-center gap-1.5 cursor-pointer",
                       isSelected
-                        ? "border-emerald-600 bg-emerald-600 text-white font-semibold shadow-xs"
+                        ? "border-[#113057] bg-[#113057] text-white font-semibold shadow-xs"
                         : "border-border bg-background text-muted-foreground hover:text-foreground hover:bg-muted/50"
                     )}
                   >
@@ -600,7 +600,7 @@ export function PracticeWorkbench() {
                       <Check
                         className={cn(
                           "h-3 w-3",
-                          isSelected ? "text-white" : "text-emerald-600"
+                          isSelected ? "text-[#FFB61E]" : "text-[#113057]"
                         )}
                       />
                     )}
@@ -615,7 +615,7 @@ export function PracticeWorkbench() {
       {/* Navigasi Cepat Nomor Soal (1 - 10) */}
       <div className="rounded-xl border bg-card p-3.5 shadow-xs flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
         <div className="flex items-center gap-2">
-          <ClipboardCheck className="h-4 w-4 text-emerald-600 shrink-0" />
+          <ClipboardCheck className="h-4 w-4 text-[#113057] shrink-0" />
           <span className="text-xs font-semibold text-foreground">
             {isReviewMode
               ? `Ulasan Jawaban Percobaan ${selectedAttemptTab} (${reviewedAttempt?.correctCount ?? 0}/${PRACTICE_SESSION_SIZE} Benar):`
@@ -646,10 +646,10 @@ export function PracticeWorkbench() {
                   "h-7 w-7 rounded-md font-mono text-xs font-bold border transition-all flex items-center justify-center cursor-pointer",
                   !isReviewMode
                     ? isAnswered
-                      ? "border-emerald-600 bg-emerald-600 text-white"
+                      ? "border-[#113057] bg-[#113057] text-white"
                       : "border-border bg-muted/40 text-muted-foreground hover:text-foreground"
                     : !hasSavedAnswersInReview
-                      ? "border-emerald-600 bg-emerald-50 text-emerald-800"
+                      ? "border-[#113057] bg-[#113057]/10 text-[#113057]"
                       : isCorrect
                         ? "border-[#166534] bg-[#DCFCE7] text-[#166534]"
                         : "border-[#991B1B] bg-[#FEE2E2] text-[#991B1B]"
@@ -680,7 +680,7 @@ export function PracticeWorkbench() {
               <CardHeader className="pb-3 border-b">
                 <div className="flex flex-wrap items-center justify-between gap-2">
                   <div className="flex items-center gap-2">
-                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-emerald-600 text-white text-xs font-mono font-bold">
+                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-[#113057] text-white text-xs font-mono font-bold">
                       {qIdx + 1}
                     </span>
                     <Badge variant="secondary" className="text-[11px]">
@@ -728,7 +728,7 @@ export function PracticeWorkbench() {
                       if (!isReviewMode) {
                         if (isSelected) {
                           optionStyle =
-                            "border-emerald-600 bg-emerald-50/80 text-emerald-900 font-semibold ring-1 ring-emerald-600/30 dark:bg-emerald-950/50 dark:text-emerald-200"
+                            "border-[#113057] bg-[#113057]/10 text-[#0A2342] font-semibold ring-1 ring-[#113057]/30 dark:bg-[#113057]/25 dark:text-white"
                         }
                       } else {
                         if (isOptionCorrect) {
@@ -760,7 +760,7 @@ export function PracticeWorkbench() {
                               className={cn(
                                 "flex h-6 w-6 shrink-0 items-center justify-center rounded font-mono text-xs font-bold border",
                                 !isReviewMode && isSelected
-                                  ? "bg-emerald-600 text-white border-emerald-600"
+                                  ? "bg-[#113057] text-white border-[#113057]"
                                   : isReviewMode && isOptionCorrect
                                     ? "bg-[#166534] text-white border-[#166534]"
                                     : isReviewMode && isSelected && !isOptionCorrect
@@ -801,14 +801,14 @@ export function PracticeWorkbench() {
                         onChange={(e) =>
                           handleShortAnswerChange(q.id, e.target.value)
                         }
-                        placeholder={q.placeholder ?? "Ketik jawaban Anda..."}
+                        placeholder={q.placeholder ?? "Ketik jawabanmu di sini..."}
                         className="font-mono text-sm h-9"
                         aria-label={`Jawaban soal nomor ${qIdx + 1}`}
                       />
                     </div>
                     {q.answerHint && !isReviewMode && (
                       <p className="text-[11px] text-muted-foreground flex items-center gap-1.5">
-                        <HelpCircle className="h-3.5 w-3.5 text-emerald-600 shrink-0" />
+                        <HelpCircle className="h-3.5 w-3.5 text-[#D97706] dark:text-[#FFB61E] shrink-0" />
                         <span>Petunjuk: {q.answerHint}</span>
                       </p>
                     )}
@@ -876,7 +876,7 @@ export function PracticeWorkbench() {
                     )}
 
                     <div className="rounded-xl border bg-background p-3.5 text-xs flex flex-col gap-2">
-                      <span className="font-bold text-emerald-700 dark:text-emerald-400 uppercase tracking-wider text-[11px]">
+                      <span className="font-bold text-[#113057] dark:text-[#60A5FA] uppercase tracking-wider text-[11px]">
                         Pembahasan Soal {qIdx + 1}:
                       </span>
                       <p className="text-foreground/90 leading-relaxed">
@@ -913,33 +913,33 @@ export function PracticeWorkbench() {
       )}
 
       {/* Panel Tombol Aksi Bawah */}
-      <Card className="shadow-xs border-emerald-500/40">
+      <Card className="shadow-xs border-[#113057]/30">
         <CardContent className="p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <div className="flex flex-col gap-0.5">
             <span className="text-xs sm:text-sm font-bold text-foreground">
               {!isReviewMode
-                ? `Progres Pengerjaan Percobaan ${selectedAttemptTab}: ${answeredCount} dari ${PRACTICE_SESSION_SIZE} Soal Terjawab`
+                ? `Progres Percobaan ${selectedAttemptTab}: ${answeredCount} dari ${PRACTICE_SESSION_SIZE} Soal Terjawab`
                 : reviewedAttempt?.passed
                   ? `Percobaan ${selectedAttemptTab} Tuntas (Skor: ${reviewedAttempt.score}/100 - Lulus KKM 70)`
                   : `Percobaan ${selectedAttemptTab} Selesai (Skor: ${reviewedAttempt?.score ?? 0}/100 - Di Bawah KKM 70)`}
             </span>
             <span className="text-xs text-muted-foreground">
               {!isReviewMode
-                ? "Pastikan seluruh 10 butir soal telah diisi sebelum menekan tombol Kirim Jawaban Latihan."
+                ? "Pastikan seluruh 10 soal sudah terisi sebelum mengirim jawaban."
                 : hasPassedInCurrentCycle
-                  ? "Anda telah lulus latihan (Skor >= 70). Silakan lanjut ke Kuis Evaluasi tanpa perlu mengerjakan soal baru di latihan."
+                  ? "Kamu sudah lolos latihan (Skor >= 70). Lanjut ke Kuis Evaluasi sekarang."
                   : canStartNextAttempt
-                    ? `Karena skor percobaan ini masih di bawah 70, silakan lanjut mengerjakan Percobaan ${nextAvailableAttemptNumber}.`
-                    : "Seluruh 3 kali kesempatan telah digunakan. Anda dapat melihat kembali Percobaan 1, 2, 3 di atas atau lanjut ke Kuis Evaluasi."}
+                    ? `Skor masih di bawah 70. Yuk coba lagi di Percobaan ${nextAvailableAttemptNumber}.`
+                    : "Semua 3 kesempatan sudah terpakai. Cek lagi hasil di atas atau lanjut ke Kuis Evaluasi."}
             </span>
           </div>
 
-          <div className="flex flex-wrap items-center gap-2 shrink-0">
+          <div className="flex flex-wrap items-center gap-2 w-full sm:w-auto sm:shrink-0">
             {!isReviewMode ? (
               <Button
                 type="button"
                 onClick={handleSubmitSession}
-                className="gap-1.5 bg-emerald-600 text-white hover:bg-emerald-700"
+                className="gap-1.5 bg-[#113057] text-white hover:bg-[#0A2342]"
               >
                 <Send className="h-3.5 w-3.5" />
                 Kirim Jawaban Latihan (Percobaan {selectedAttemptTab}/{PRACTICE_MAX_ATTEMPTS})
@@ -949,7 +949,7 @@ export function PracticeWorkbench() {
                 href="/kuis"
                 className={cn(
                   buttonVariants({ size: "default" }),
-                  "gap-1.5 bg-emerald-600 text-white hover:bg-emerald-700"
+                  "gap-1.5 bg-[#FFB61E] text-[#0A2342] font-semibold hover:bg-[#F59E0B]"
                 )}
               >
                 <Award className="h-4 w-4" />
@@ -960,7 +960,7 @@ export function PracticeWorkbench() {
               <Button
                 type="button"
                 onClick={handleStartNextAttempt}
-                className="gap-1.5 bg-emerald-600 text-white hover:bg-emerald-700"
+                className="gap-1.5 bg-[#113057] text-white hover:bg-[#0A2342]"
               >
                 <PlayCircle className="h-4 w-4" />
                 Lanjut Latihan ke Percobaan {nextAvailableAttemptNumber} (Sisa{" "}
@@ -981,7 +981,7 @@ export function PracticeWorkbench() {
                   href="/kuis"
                   className={cn(
                     buttonVariants({ size: "default" }),
-                    "gap-1.5 bg-emerald-600 text-white hover:bg-emerald-700"
+                    "gap-1.5 bg-[#113057] text-white hover:bg-[#0A2342]"
                   )}
                 >
                   <Award className="h-4 w-4" />
