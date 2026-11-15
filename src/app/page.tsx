@@ -113,7 +113,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="lg:col-span-5 min-w-0 flex items-center justify-center">
+            <div className="hidden lg:flex lg:col-span-5 min-w-0 items-center justify-center">
               <HeroIpv4Topology />
             </div>
           </div>
