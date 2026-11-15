@@ -14,6 +14,7 @@ import {
 } from "lucide-react"
 
 import { calculateIPv4 } from "@/features/ipv4"
+import { HeroIpv4Topology } from "@/components/hero-ipv4-topology"
 import { SectionCards } from "@/components/section-cards"
 import { SiteHeader } from "@/components/site-header"
 import { buttonVariants } from "@/components/ui/button"
@@ -75,39 +76,45 @@ export default function Home() {
       <SiteHeader />
 
       <main className="flex-1 w-full max-w-7xl mx-auto flex flex-col gap-8 py-8 px-4 sm:px-6 lg:px-8">
-        {/* Hero Section (Solid Navy #113057 + Yellow #FFB61E - Clean Tanpa Glow) */}
+        {/* Hero Section (Solid Navy #113057 + Yellow #FFB61E + Topologi IPv4 Transparan) */}
         <section className="rounded-2xl border border-[#113057] bg-[#113057] p-6 md:p-10 text-white">
-          <div className="flex flex-col gap-4 max-w-3xl">
-            <h1 className="text-3xl font-extrabold tracking-tight sm:text-4xl md:text-5xl text-white leading-[1.15]">
-              Kuasai Pengalamatan IPv4, <br className="hidden sm:inline" />
-              <span className="text-[#FFB61E]">Tanpa Pusing Hitung Biner.</span>
-            </h1>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div className="lg:col-span-7 min-w-0 flex flex-col gap-4">
+              <h1 className="text-3xl font-extrabold tracking-tight sm:text-4xl md:text-5xl text-white leading-[1.15]">
+                Kuasai Pengalamatan IPv4, <br className="hidden sm:inline" />
+                <span className="text-[#FFB61E]">Tanpa Pusing Hitung Biner.</span>
+              </h1>
 
-            <p className="text-base text-white/85 sm:text-lg leading-relaxed max-w-2xl">
-              Bukan sekadar hafalan rumus. Pahami cara kerja 32-bit biner, lihat proses perhitungan subnetting langkah demi langkah, lalu uji kemampuanmu lewat latihan dan kuis interaktif.
-            </p>
+              <p className="text-base text-white/85 sm:text-lg leading-relaxed max-w-2xl">
+                Bukan sekadar hafalan rumus. Pahami cara kerja 32-bit biner, lihat proses perhitungan subnetting langkah demi langkah, lalu uji kemampuanmu lewat latihan dan kuis interaktif.
+              </p>
 
-            <div className="flex flex-wrap items-center gap-3 pt-2">
-              <Link
-                href="/materi"
-                className={cn(
-                  buttonVariants({ size: "lg" }),
-                  "gap-2 bg-[#FFB61E] text-[#113057] font-semibold hover:bg-[#F59E0B] border-0"
-                )}
-              >
-                <BookOpen className="h-4 w-4" />
-                Mulai Belajar Materi
-              </Link>
-              <Link
-                href="/simulator"
-                className={cn(
-                  buttonVariants({ size: "lg", variant: "outline" }),
-                  "gap-2 border-white/30 bg-white/10 text-white hover:bg-white/20 hover:text-white"
-                )}
-              >
-                <Calculator className="h-4 w-4" />
-                Coba Simulator
-              </Link>
+              <div className="flex flex-wrap items-center gap-3 pt-2">
+                <Link
+                  href="/materi"
+                  className={cn(
+                    buttonVariants({ size: "lg" }),
+                    "gap-2 bg-[#FFB61E] text-[#113057] font-semibold hover:bg-[#F59E0B] border-0"
+                  )}
+                >
+                  <BookOpen className="h-4 w-4" />
+                  Mulai Belajar Materi
+                </Link>
+                <Link
+                  href="/simulator"
+                  className={cn(
+                    buttonVariants({ size: "lg", variant: "outline" }),
+                    "gap-2 border-white/30 bg-white/10 text-white hover:bg-white/20 hover:text-white"
+                  )}
+                >
+                  <Calculator className="h-4 w-4" />
+                  Coba Simulator
+                </Link>
+              </div>
+            </div>
+
+            <div className="lg:col-span-5 min-w-0 flex items-center justify-center">
+              <HeroIpv4Topology />
             </div>
           </div>
         </section>

@@ -27,10 +27,10 @@ export function CalculationSteps({ result }: CalculationStepsProps) {
   }, [result.subnetBlocks, showAllBlocks])
 
   return (
-    <div className="flex flex-col gap-5">
+    <div className="flex flex-col gap-5 min-w-0">
       {/* 1. Tabel Daftar Blok Subnet (Jika Unicast Calculable) */}
       {result.classification.isUnicastCalculable && result.subnetBlocks.length > 0 && (
-        <Card className="shadow-xs">
+        <Card className="shadow-xs min-w-0">
           <CardHeader className="pb-3 border-b flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
             <div>
               <CardTitle className="text-sm font-semibold flex items-center gap-2">
@@ -128,10 +128,10 @@ export function CalculationSteps({ result }: CalculationStepsProps) {
       )}
 
       {/* 2. Penjelasan Langkah Perhitungan (Step-by-Step) */}
-      <Card className="shadow-xs">
+      <Card className="shadow-xs min-w-0">
         <CardHeader className="pb-3 border-b">
           <CardTitle className="text-sm font-semibold flex items-center gap-2">
-            <ListOrdered className="h-4 w-4 text-[#113057]" />
+            <ListOrdered className="h-4 w-4 shrink-0 text-[#113057]" />
             Penjelasan Langkah Perhitungan (Step-by-Step)
           </CardTitle>
           <p className="text-xs text-muted-foreground mt-0.5">
@@ -140,40 +140,39 @@ export function CalculationSteps({ result }: CalculationStepsProps) {
         </CardHeader>
 
         <CardContent className="pt-4">
-          <div className="grid grid-cols-1 gap-3.5">
+          <div className="grid grid-cols-1 gap-3.5 min-w-0">
             {result.steps.map((step) => (
               <div
                 key={step.stepNumber}
-                className="rounded-xl border bg-muted/20 p-4 flex flex-col gap-2"
+                className="rounded-xl border bg-muted/20 p-3.5 sm:p-4 flex flex-col gap-2 min-w-0"
               >
-                <div className="flex flex-wrap items-center justify-between gap-2">
-                  <div className="flex items-center gap-2.5">
+                <div className="flex flex-wrap items-start sm:items-center justify-between gap-2 min-w-0">
+                  <div className="flex items-start sm:items-center gap-2.5 min-w-0">
                     <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#113057] text-white text-xs font-bold">
                       {step.stepNumber}
                     </span>
-                    <h4 className="text-sm font-bold text-foreground">{step.title}</h4>
+                    <h4 className="text-sm font-bold text-foreground min-w-0 leading-snug">
+                      {step.title}
+                    </h4>
                   </div>
 
                   {step.formula && (
-                    <Badge
-                      variant="outline"
-                      className="font-mono text-[11px] border-[#FFB61E] bg-[#FFB61E]/20 text-[#92400E] dark:border-[#FFB61E]/50 dark:bg-[#FFB61E]/15 dark:text-[#FFB61E]"
-                    >
-                      <BookOpenCheck className="h-3 w-3 mr-1 text-[#B45309] dark:text-[#FFB61E]" />
-                      {step.formula}
-                    </Badge>
+                    <div className="flex w-fit max-w-full items-start gap-1.5 rounded-md border border-[#FFB61E] bg-[#FFB61E]/20 px-2.5 py-1 font-mono text-[11px] font-medium text-[#92400E] dark:border-[#FFB61E]/50 dark:bg-[#FFB61E]/15 dark:text-[#FFB61E] min-w-0">
+                      <BookOpenCheck className="h-3.5 w-3.5 shrink-0 mt-0.5 text-[#B45309] dark:text-[#FFB61E]" />
+                      <span className="min-w-0 break-words leading-snug">{step.formula}</span>
+                    </div>
                   )}
                 </div>
 
-                <p className="text-xs text-foreground/90 font-medium pl-8">
+                <p className="text-xs text-foreground/90 font-medium sm:pl-8 break-words">
                   {step.summary}
                 </p>
 
-                <div className="pl-8 pt-1 flex flex-col gap-1">
+                <div className="sm:pl-8 pt-1 flex flex-col gap-1.5 min-w-0">
                   {step.details.map((detail, idx) => (
                     <div
                       key={idx}
-                      className="text-xs font-mono text-muted-foreground bg-background/80 border rounded px-2.5 py-1"
+                      className="text-[11px] sm:text-xs font-mono text-muted-foreground bg-background/80 border rounded px-2.5 py-1.5 min-w-0 overflow-x-auto break-words"
                     >
                       {detail}
                     </div>
